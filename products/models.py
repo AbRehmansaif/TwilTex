@@ -5,30 +5,16 @@ class Product(models.Model):
     # Main product information
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
-    heading = models.CharField(max_length=300)
     short_description = models.TextField(help_text="Brief description shown on product card")
     
     # Points for product card (comma separated, will be split)
     card_points = models.TextField(help_text="Enter points separated by commas")
     
     # View Details Page Content
-    detail_title = models.CharField(max_length=300, blank=True, help_text="Title paragraph below heading in details page")
     detail_description = models.TextField(help_text="Main paragraph with product details")
     
     # Bullet points for detail page (comma separated)
     detail_points = models.TextField(help_text="Enter bullet points separated by commas")
-    
-    # Technology/Features
-    # technology = models.TextField(blank=True, help_text="Technology stack or features")
-    
-    # Product specifications (JSON or text field)
-    # specifications = models.JSONField(default=dict, blank=True, help_text="Store as JSON: {'Count Range': 'Ne 10s to Ne 100s', ...}")
-    
-    # Capacity
-    capacity = models.CharField(max_length=100, blank=True)
-    
-    # Material types
-    materials = models.TextField(help_text="Comma separated list of materials")
     
     # Applications
     applications = models.TextField(help_text="Comma separated list of applications")
@@ -54,10 +40,6 @@ class Product(models.Model):
         """Convert comma-separated detail points to list"""
         return [point.strip() for point in self.detail_points.split(',') if point.strip()]
     
-    def get_materials_list(self):
-        """Convert comma-separated materials to list"""
-        return [material.strip() for material in self.materials.split(',') if material.strip()]
-    
     def get_applications_list(self):
         """Convert comma-separated applications to list"""
         return [app.strip() for app in self.applications.split(',') if app.strip()]
@@ -81,18 +63,3 @@ class ProductImage(models.Model):
     
     class Meta:
         ordering = ['is_main', 'display_order']
-
-
-class Specification(models.Model):
-    """Alternative specification model if you prefer separate table over JSON"""
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='specs')
-    key = models.CharField(max_length=100)
-    value = models.CharField(max_length=200)
-    display_order = models.IntegerField(default=0)
-    
-    def __str__(self):
-        return f"{self.product.name} - {self.key}"
-    
-    class Meta:
-        ordering = ['display_order']
-        unique_together = ['product', 'key']
