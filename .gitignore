@@ -43,9 +43,8 @@ static/
 .DS_Store
 Thumbs.db
 
-# Migrations (optional – keep if you don’t want to push)
-# */migrations/
-# !*/migrations/__init__.py
+*/migrations/*
+!*/migrations/__init__.py
 
 # Coverage / Testing
 htmlcov/
