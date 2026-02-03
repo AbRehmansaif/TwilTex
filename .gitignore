@@ -27,7 +27,6 @@ venv.bak/
 db.sqlite3
 media/
 staticfiles/
-static/
 
 # Environment Variables
 .env
