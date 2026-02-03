@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ service.title }} - Twil Tex{% endblock %}
+{% block meta_description %}{{ service.description }}{% endblock %}
+
+{% block content %}
+    <!-- Service Detail -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="card-3d p-3">
+                        <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-4 text-white mb-4">{{ service.title }}</h1>
+                    <p class="text-muted lead mb-5">{{ service.description }}</p>
+                    
+                    <div class="glass-panel p-4 mb-4">
+                        <h4 class="text-white h6 mb-3">Why Choose This Service?</h4>
+                        <p class="text-muted small mb-0">
+                            Our {{ service.title|lower }} service is designed to meet the highest industry standards. 
+                            We combine cutting-edge technology with expert craftsmanship to deliver exceptional results.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <a href="{% url 'main:contact' %}" class="btn btn-primary-3d me-3">Get Started</a>
+                        <a href="{% url 'services:list' %}" class="btn btn-outline-light rounded-pill px-4">Back to Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

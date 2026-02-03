@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - Services{% endblock %}
+
+{% block meta_description %}Discover professional industrial textile procurement and B2B textile sourcing services. Twil Tex provides end-to-end corporate textile solutions globally.{% endblock %}
+
+{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="container text-center py-5 mt-5">
+        <span class="text-gold text-uppercase tracking-wider small">Corporate Textile Solutions</span>
+        <h1 class="display-3 fw-light mb-4">B2B Textile Sourcing</h1>
+        <div style="height: 1px; width: 100px; background: var(--accent-gold); margin: 0 auto 30px;"></div>
+        <p class="lead text-muted mx-auto" style="max-width: 600px;">
+            Professional <strong>industrial textile procurement</strong> and manufacturing. We offer end-to-end <strong>corporate textile solutions</strong> tailored for global textile organizations.
+        </p>
+    </div>
+
+    <!-- Services Grid -->
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-5">
+                {% if services %}
+                    {% for service in services %}
+                    <!-- Service {{ forloop.counter }} -->
+                    <div class="col-lg-4">
+                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
+                            <div class="img-reveal">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4 bg-transparent">
+                                <h3 class="text-white mb-2 fw-normal">{{ service.title }}</h3>
+                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
+                                <p class="text-muted small mb-4">{{ service.description|truncatewords:20 }}</p>
+                                <a href="{% url 'services:detail' service.pk %}" class="btn btn-sm btn-outline-light rounded-pill px-4">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <!-- Default Services (shown when no services in database) -->
+                    <!-- Service 1 -->
+                    <div class="col-lg-4">
+                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yarn" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4 bg-transparent">
+                                <h3 class="text-white mb-2 fw-normal">Yarn Manufacturing</h3>
+                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
+                                <p class="text-muted small mb-4">High-tensile strength yarn production using ring spinning technology.</p>
+                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="col-lg-4">
+                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dyeing" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4 bg-transparent">
+                                <h3 class="text-white mb-2 fw-normal">Fabric Dyeing</h3>
+                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
+                                <p class="text-muted small mb-4">Eco-friendly pigment and reactive dyeing processes.</p>
+                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="col-lg-4">
+                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1563837712359-1667f31458e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Printing" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4 bg-transparent">
+                                <h3 class="text-white mb-2 fw-normal">Textile Printing</h3>
+                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
+                                <p class="text-muted small mb-4">Digital and rotary printing services for complex patterns.</p>
+                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Quality Assurance -->
+            <div class="glass-panel p-5 mt-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="text-white mb-3">ISO 9001 Certified Quality</h3>
+                        <p class="text-muted">
+                            Every meter of fabric that leaves our warehouse runs through a 4-point inspection system. 
+                            We use advanced <strong>Uster Technologies</strong> lab equipment to test yarn strength and evenness.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                         <i class="fas fa-medal fa-5x text-gold"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

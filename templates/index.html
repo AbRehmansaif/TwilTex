@@ -1,0 +1,389 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - Bulk Textile Suppliers & Wholesale Fabric Manufacturers{% endblock %}
+
+{% block meta_description %}Premium B2B textile sourcing and industrial textile procurement for global markets. Explore corporate textile solutions with Twil Tex.{% endblock %}
+
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://twiltex.com/">
+<meta property="og:title" content="Bulk Textile Suppliers & Wholesale Fabric Manufacturers | Twil Tex Industries">
+<meta property="og:description" content="Premium B2B textile sourcing and industrial textile procurement for global markets. Explore corporate textile solutions with Twil Tex.">
+<meta property="og:image" content="https://twiltex.com/static/images/seo-banner.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://twiltex.com/">
+<meta property="twitter:title" content="Bulk Textile Suppliers | Wholesale Fabric Manufacturers">
+<meta property="twitter:description" content="Professional industrial textile procurement and corporate textile solutions. Trusted by global organizations.">
+
+<!-- JSON-LD Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Twil Tex Industries",
+  "url": "https://twiltex.com",
+  "logo": "https://twiltex.com/static/images/logo.png",
+  "description": "Leading bulk textile suppliers and wholesale fabric manufacturers providing industrial textile procurement and B2B textile sourcing.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+92-307-7970301",
+    "contactType": "customer service",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["English", "Urdu"]
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Carousel Section -->
+    <header class="hero-section">
+        <div class="container overflow-visible">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <!-- Slide 1: Contact Us -->
+                    <div class="carousel-item active">
+                        <div class="hero-display">
+                            <div class="hero-content-side animate__animated animate__fadeInLeft">
+                                <div class="hero-badge">Established 2004 - Faisalabad</div>
+                                <h1 class="hero-title">
+                                    Connecting the World<br>
+                                    <strong>to Pakistan’s Textiles</strong>
+                                </h1>
+                                <p class="hero-description text-muted">
+                                    Twil Tex, a Pakistan-based textile sourcing agency, helps international buyers source high-quality Home, Hospitality, and Healthcare textiles with expert-managed production, strict quality control, and on-time delivery worldwide.
+                                </p>
+                                <div class="hero-actions">
+                                    <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold">Contact Us</a>
+                                </div>
+                            </div>
+                            <div class="hero-image-side">
+                                <img src="{% static 'images/mainimages/bedlightblue.jpeg' %}" alt="Sustainable Cotton Production">
+                                <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
+                                    <h5 class="m-0 text-white">Organic Harvest</h5>
+                                    <small class="text-gold">Pure. Natural. Ethical. </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Who We Are -->
+                    <div class="carousel-item">
+                        <div class="hero-display">
+                            <div class="hero-content-side animate__animated animate__fadeInLeft">
+                                <div class="hero-badge">Reliable Textiles, On Time</div>
+                                <h1 class="hero-title">
+                                    Committed to<br>
+                                    <strong>Our Mission</strong>
+                                </h1>
+                                <p class="hero-description text-muted">
+                                    Our mission is to provide international buyers with high-quality textiles from Pakistan, managed by dedicated experts for smooth production, strict quality control, and reliable, on-time delivery worldwide.
+                                </p>
+                                <div class="hero-actions">
+                                    <a href="{% url 'main:about' %}" class="btn-premium btn-premium-gold">Who We Are</a>
+                                </div>
+                            </div>
+                            <div class="hero-image-side">
+                                <img src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Luxury Fabric Texture">
+                                <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
+                                    <h5 class="m-0 text-white">Royal Silk Series</h5>
+                                    <small class="text-gold">Excellence in Silk</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Our Products -->
+                    <div class="carousel-item">
+                        <div class="hero-display">
+                            <div class="hero-content-side animate__animated animate__fadeInLeft">
+                                <div class="hero-badge">Full Control, Top Quality</div>
+                                <h1 class="hero-title">
+                                    Totally<br>
+                                    <strong>Committed to Quality</strong>
+                                </h1>
+                                <p class="hero-description text-muted">
+                                    From Home linens to Hospitality and Healthcare products, Twil Tex guarantees exceptional quality, on-time delivery, and long term partnership for buyers worldwide.
+                                </p>
+                                <div class="hero-actions">
+                                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold">Our Products</a>
+                                </div>
+                            </div>
+                            <div class="hero-image-side">
+                                <img src="{% static 'images/mainimages/img1.jpeg' %}" alt="Modern Textile Factory">
+                                <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
+                                    <h5 class="m-0 text-white">World Delivery</h5>
+                                    <small class="text-gold">Direct from Faisalabad</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Creating Excellence / Features -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                     <span class="text-gold text-uppercase tracking-wider fw-bold">Our Expertise</span>
+                    <h2 class="display-5 mt-2 fw-normal text-white">Crafting Excellence</h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4 animate-on-scroll delay-100">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-th fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Weaving</h4>
+                        <p class="text-muted mt-3">High-speed air jet and shuttle less looms producing premium quality fabrics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-on-scroll delay-200">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-fill-drip fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Processing</h4>
+                        <p class="text-muted mt-3">Advanced bleaching, dyeing, and finishing ensuring vibrant and lasting results.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate-on-scroll delay-300">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-cut fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Stitching</h4>
+                        <p class="text-muted mt-3">Expert tailoring and quality controlled stitching for retail ready textile products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Strategic Services Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">End-to-End Solutions</span>
+                <h2 class="display-5 mt-2 text-white">Our Strategic Services</h2>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Sourcing -->
+                <div class="col-lg-3 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-search-dollar fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Expert Sourcing</h5>
+                        <p class="text-muted small mb-0">Identifying the best textile sources across Pakistan's vast manufacturing network.</p>
+                    </div>
+                </div>
+                <!-- Quality Control -->
+                <div class="col-lg-3 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-microscope fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Quality Control</h5>
+                        <p class="text-muted small mb-0">Strict production quality management to ensure zero defect standards.</p>
+                    </div>
+                </div>
+                <!-- Design Development -->
+                <div class="col-lg-3 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-drafting-compass fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Design Development</h5>
+                        <p class="text-muted small mb-0">Transforming concepts into manufacturable textile designs and samples.</p>
+                    </div>
+                </div>
+                <!-- Lab Testing -->
+                <div class="col-lg-3 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-flask fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Lab Testing</h5>
+                        <p class="text-muted small mb-0">Coordination with independent labs for fiber, garment, and safety testing.</p>
+                    </div>
+                </div>
+                
+                <!-- Lower Row -->
+                <!-- Color Separation -->
+                <div class="col-lg-3 col-md-4 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-fill-drip fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Color Separation</h5>
+                        <p class="text-muted small mb-0">Precision color management for exact shade matching across batches.</p>
+                    </div>
+                </div>
+                <!-- Production Follow-up -->
+                <div class="col-lg-3 col-md-4 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-tasks fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Production Follow-up</h5>
+                        <h1 class="visually-hidden">Follow Up</h1> <!-- Hidden booster for logic -->
+                        <p class="text-muted small mb-0">Real time daily tracking of production milestones to ensure on time delivery.</p>
+                    </div>
+                </div>
+                <!-- Final Inspection -->
+                <div class="col-lg-3 col-md-4 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift border-gold-hover">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-clipboard-check fa-2x"></i>
+                        </div>
+                        <h5 class="text-white mb-2">Final Inspection</h5>
+                        <p class="text-muted small mb-0">Rigorous final random inspection (FRI) before cargo departure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Customer Reviews -->
+    <section class="py-5">
+        <div class="container py-5">
+             <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">Testimonials</span>
+                <h2 class="display-5 mt-2 text-white">What Our Clients Say</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Review 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-panel p-4 h-100">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted mb-4">"Twil Tex has transformed our supply chain. The quality of their organic cotton yarn is unmatched in the region."</p>
+                        <div class="d-flex align-items-center">
+                           <div class="bg-secondary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                           </div>
+                           <div>
+                               <h6 class="mb-0 text-white">Ahmed Raza</h6>
+                               <small class="text-muted">CEO, FashionEx</small>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="col-md-6 col-lg-4">
+                     <div class="glass-panel p-4 h-100">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted mb-4">"Their dyeing consistency is incredible. We've never had a batch rejected. Highly professional team in Faisalabad."</p>
+                        <div class="d-flex align-items-center">
+                           <div class="bg-secondary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                           </div>
+                           <div>
+                               <h6 class="mb-0 text-white">Sarah Jenkins</h6>
+                               <small class="text-muted">Sourcing Manager, UK</small>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="col-md-6 col-lg-4">
+                     <div class="glass-panel p-4 h-100">
+                        <div class="mb-3 text-gold">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-muted mb-4">"Great variety of digital prints. The 3D textures they are experimenting with are very promising for the future."</p>
+                        <div class="d-flex align-items-center">
+                           <div class="bg-secondary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                           </div>
+                           <div>
+                               <h6 class="mb-0 text-white">Chen Wei</h6>
+                               <small class="text-muted">Designer, Shanghai</small>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-5 position-relative overflow-hidden">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">Our Valuable</span>
+                <h2 class="display-5 mt-2 text-white">Certifications</h2>
+            </div>
+            
+            <div class="cert-slider">
+                <div class="cert-track">
+                    <!-- First Set -->
+                    <div class="cert-slide"><img src="{% static 'images/certifications/BCI-e1750855090767.png' %}" alt="BCI Certification"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/bsci-e1750855060581.png' %}" alt="BSCI Certification"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-11-1.png' %}" alt="Certification 11"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-12-1.png' %}" alt="Certification 12"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-6-1.png' %}" alt="Certification 6"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-7-1.png' %}" alt="Certification 7"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/eco-friendly-e1750855112560.png' %}" alt="Eco Friendly"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/global-organic-textile-logo-e1750855134632.png' %}" alt="GOTS"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/global-recycled-e1750854978549.png' %}" alt="Global Recycled"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/made-in-green-e1750855027344.png' %}" alt="Made in Green"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/okeo-tex-1-e1750855199304.png' %}" alt="OEKO-TEX 1"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/okeo-tex-e1750855176542.png' %}" alt="OEKO-TEX"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/sanfor-knit-e1750855221147.png' %}" alt="Sanfor Knit"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/sedex-e1750855239873.png' %}" alt="Sedex"></div>
+                    
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="cert-slide"><img src="{% static 'images/certifications/BCI-e1750855090767.png' %}" alt="BCI Certification"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/bsci-e1750855060581.png' %}" alt="BSCI Certification"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-11-1.png' %}" alt="Certification 11"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-12-1.png' %}" alt="Certification 12"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-6-1.png' %}" alt="Certification 6"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/cer-7-1.png' %}" alt="Certification 7"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/eco-friendly-e1750855112560.png' %}" alt="Eco Friendly"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/global-organic-textile-logo-e1750855134632.png' %}" alt="GOTS"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/global-recycled-e1750854978549.png' %}" alt="Global Recycled"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/made-in-green-e1750855027344.png' %}" alt="Made in Green"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/okeo-tex-1-e1750855199304.png' %}" alt="OEKO-TEX 1"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/okeo-tex-e1750855176542.png' %}" alt="OEKO-TEX"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/sanfor-knit-e1750855221147.png' %}" alt="Sanfor Knit"></div>
+                    <div class="cert-slide"><img src="{% static 'images/certifications/sedex-e1750855239873.png' %}" alt="Sedex"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

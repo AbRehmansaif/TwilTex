@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - About{% endblock %}
+
+{% block meta_description %}Learn about Twil Tex Industries, leading bulk textile suppliers specializing in industrial textile procurement and corporate textile solutions since 2004.{% endblock %}
+
+{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
+
+{% block content %}
+    <!-- Hero -->
+    <header class="py-5 mt-5 text-center">
+        <div class="container">
+             <h1 class="display-3 fw-bold text-3d mb-4">Leading Bulk Textile Suppliers</h1>
+             <p class="lead text-white-50 mx-auto" style="max-width: 800px;">
+                As premier <strong>wholesale fabric manufacturers</strong>, Twil Tex has been connecting the world to Pakistan’s finest textiles since 2004 through expert <strong>industrial textile procurement</strong> and <strong>B2B sourcing</strong>.
+             </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="pb-5">
+        <div class="container">
+            
+            <!-- Story Section -->
+            <div class="row align-items-center mb-5 animate-on-scroll">
+                <div class="col-lg-6">
+                    <div class="card-3d p-4 img-reveal">
+                        <img src="{% static 'images/mainimages/bedlightblue.jpeg' %}" alt="Industrial Textile Procurement at Twil Tex Factory" class="img-fluid rounded-3">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Our Legacy</span>
+                    <h2 class="mb-4 text-white">Industrial Textile Experts</h2>
+                    <p class="text-muted mb-4 lead">
+                        Established in 2004 in Faisalabad, Twil Tex has evolved into a powerhouse for <strong>wholesale fabric manufacturing</strong> and global <strong>industrial textile procurement</strong>. We serve international organizations with specialized Home, Hospitality, and Healthcare textiles, acting as dedicated <strong>B2B textile sourcing</strong> partners who guarantee quality, compliance, and corporate-grade delivery schedules.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
+                            <i class="fas fa-certificate text-green"></i>
+                            <span class="text-white small fw-bold">ISO 9001</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
+                            <i class="fas fa-leaf text-green"></i>
+                            <span class="text-white small fw-bold">OEKO-TEX</span>
+                        </div>
+                         <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
+                            <i class="fas fa-globe text-green"></i>
+                            <span class="text-white small fw-bold">GOTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fabric Detail Section (New) -->
+            <div class="row align-items-center mb-5 pt-5 animate-on-scroll">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="card-3d p-4 img-reveal">
+                        <img src="{% static 'images/mainimages/dotedbedsheet.jpeg' %}" alt="Fabric Detail" class="img-fluid rounded-3">
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-5 order-lg-1">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Craftsmanship</span>
+                    <h2 class="display-5 text-white mb-4">Fabric Detail</h2>
+                    <h4 class="text-white-50 mb-3">Premium Quality</h4>
+                    <p class="text-muted lead">
+                        At Twil Tex, our commitment to excellence is woven into every fiber. Every inch of our fabric is inspected for perfection using advanced technology and hand-finished expertise to ensure zero defects.
+                    </p>
+                    <ul class="list-unstyled text-muted mt-4">
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Masterful Weaving Techniques</li>
+                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Superior Thread Count</li>
+                        <li><i class="fas fa-check text-gold me-2"></i> Eco-Friendly Processing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="row g-4 mt-5">
+                <div class="col-md-6">
+                    <div class="glass-panel p-5 h-100 text-center">
+                        <div class="card-content">
+                            <i class="fas fa-bullseye fa-3x mb-4 text-gold"></i>
+                            <h3 class="mb-3 text-white">Our Mission</h3>
+                            <p class="text-muted">
+                                To provide world class textile solutions for Home, Hospitality, and Healthcare sectors, combining expert managed sourcing, strict quality control, and ethical practices for global markets.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-panel p-5 h-100 text-center">
+                        <div class="card-content">
+                            <i class="fas fa-eye fa-3x mb-4 text-gold"></i>
+                            <h3 class="mb-3 text-white">Our Vision</h3>
+                            <p class="text-muted">
+                                To be a global leader in sustainable textile sourcing and manufacturing, defining the future of fabrics through innovation, technology, and dedicated expertise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

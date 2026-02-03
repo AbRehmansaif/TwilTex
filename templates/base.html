@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Twil Tex{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Twil Tex Industries is a global leader in industrial textile procurement and B2B textile sourcing.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions, Twil Tex, Pakistan textiles{% endblock %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'main:home' %}">
+                <i class="fas fa-gem me-2" style="font-size: 0.8em; color: var(--accent-gold);"></i>Twil Tex
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'products:list' %}">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'services:list' %}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:privacy' %}">Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 position-relative">
+        <div class="container">
+            <div class="row gy-5 justify-content-between">
+                <!-- Brand -->
+                <div class="col-lg-6 col-md-6">
+                    <h4 class="mb-3 text-white text-3d">Twil Tex</h4>
+                    <p class="text-muted small">
+                        Bringing the world to Pakistan’s finest textiles since 2004. Expert-managed sourcing, sustainable practices, and on-time delivery for every project.
+                    </p>
+                    <div class="d-flex align-items-center gap-3 mt-4">
+                        <a href="#" class="social-icon-link facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 d-inline-flex bg-glass mt-4">
+                        <i class="fas fa-certificate text-gold"></i>
+                        <span class="small text-white fw-bold">ISO 9001 Certified</span>
+                    </div>
+                </div>
+                <!-- Links (Responsive: List for Desktop, Swipeable for Mobile) -->
+                <div class="col-lg-6 col-md-6 order-2 order-md-2">
+                    <!-- Desktop View -->
+                    <div class="d-none d-md-block">
+                        <h6 class="text-gold text-uppercase mb-4 fw-bold">Quick Links</h6>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled text-muted small mb-0">
+                                    <li class="mb-2"><a href="{% url 'main:home' %}" class="text-decoration-none text-muted hover-gold transition-all">Home</a></li>
+                                    <li class="mb-2"><a href="{% url 'main:about' %}" class="text-decoration-none text-muted hover-gold transition-all">About Us</a></li>
+                                    <li class="mb-2"><a href="{% url 'products:list' %}" class="text-decoration-none text-muted hover-gold transition-all">Products</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled text-muted small mb-0">
+                                    <li class="mb-2"><a href="{% url 'services:list' %}" class="text-decoration-none text-muted hover-gold transition-all">Services</a></li>
+                                    <li class="mb-2"><a href="{% url 'main:contact' %}" class="text-decoration-none text-muted hover-gold transition-all">Contact</a></li>
+                                    <li class="mb-2"><a href="{% url 'main:privacy' %}" class="text-decoration-none text-muted hover-gold transition-all">Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile View: Horizontal Scrollable Pills -->
+                    <div class="d-md-none mb-4">
+                        <h6 class="text-gold text-uppercase mb-3 fw-bold ps-2">Explore</h6>
+                        <div class="mobile-nav-scroll">
+                            <a href="{% url 'main:home' %}" class="mobile-nav-pill"><i class="fas fa-home"></i> Home</a>
+                            <a href="{% url 'main:about' %}" class="mobile-nav-pill"><i class="fas fa-info-circle"></i> About</a>
+                            <a href="{% url 'products:list' %}" class="mobile-nav-pill"><i class="fas fa-box"></i> Products</a>
+                            <a href="{% url 'services:list' %}" class="mobile-nav-pill"><i class="fas fa-layer-group"></i> Services</a>
+                            <a href="{% url 'main:contact' %}" class="mobile-nav-pill"><i class="fas fa-envelope"></i> Contact</a>
+                            <a href="{% url 'main:privacy' %}" class="mobile-nav-pill"><i class="fas fa-shield-alt"></i> Privacy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="border-top border-secondary pt-4 mt-5 d-flex flex-column flex-md-row justify-content-between align-items-center text-muted small gap-3">
+                <span>&copy; 2026 Twil Tex Industries. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

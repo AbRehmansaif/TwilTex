@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - Products{% endblock %}
+
+{% block meta_description %}Browse our premium range of textile products. As wholesale fabric manufacturers, we offer bulk textile supply for home, hospitality, and healthcare industries.{% endblock %}
+
+{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
+
+{% block content %}
+    <!-- Products Hero -->
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; align-items: center;">
+        <div class="container animate-on-scroll">
+             <h1 class="display-3 fw-bold text-shimmer mb-4">Our Textile Products</h1>
+             <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                From high-strength yarns to luxurious finished fabrics, explore our comprehensive range of textile solutions.
+             </p>
+        </div>
+    </header>
+
+    <!-- Product Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                {% if products %}
+                    {% for product in products %}
+                    <!-- Product {{ forloop.counter }}: {{ product.name }} -->
+                    <div class="col-lg-4 animate-on-scroll delay-{{ forloop.counter }}00">
+                        <div class="card-3d h-100">
+                            <div class="img-reveal">
+                                {% if product.images.all %}
+                                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="img-fluid card-img-250">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="{{ product.name }}" class="img-fluid card-img-250">
+                                {% endif %}
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-white h4 mb-3">{{ product.name }}</h3>
+                                <p class="text-muted small mb-4">
+                                    {{ product.short_description }}
+                                </p>
+                                <ul class="list-unstyled text-muted small mb-4">
+                                    {% for point in product.get_card_points_list %}
+                                        <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>{{ point }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <a href="{% url 'products:detail' product.slug %}" class="btn btn-primary-3d w-100">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <!-- Default Products (shown when no products in database) -->
+                    <!-- Product 1: Yarn -->
+                    <div class="col-lg-4 animate-on-scroll delay-100">
+                        <div class="card-3d h-100">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Premium Yarn" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-white h4 mb-3">Industrial Yarns</h3>
+                                <p class="text-muted small mb-4">
+                                    Our yarns are available in 100% Cotton, Polyester, and specialized blends. Engineered for high-speed weaving and knitting.
+                                </p>
+                                <ul class="list-unstyled text-muted small mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Ring Spun & Compact</li>
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Open End Yarns</li>
+                                    <li><i class="fas fa-check text-gold me-2"></i>Fancy & Slub Yarns</li>
+                                </ul>
+                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2: Fabrics -->
+                    <div class="col-lg-4 animate-on-scroll delay-200">
+                        <div class="card-3d h-100">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Luxury Fabrics" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-white h4 mb-3">Premium Fabrics</h3>
+                                <p class="text-muted small mb-4">
+                                    Diverse range of greige, dyed, and printed fabrics catering to fashion, home, and industrial sectors.
+                                </p>
+                                <ul class="list-unstyled text-muted small mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Twill, Sateen & Percale</li>
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Organic & Recycled</li>
+                                    <li><i class="fas fa-check text-gold me-2"></i>Digital Print Base</li>
+                                </ul>
+                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3: Garments/Made-ups -->
+                    <div class="col-lg-4 animate-on-scroll delay-300">
+                        <div class="card-3d h-100">
+                            <div class="img-reveal">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Textile Made-ups" class="img-fluid card-img-250">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-white h4 mb-3">Finished Made-ups</h3>
+                                <p class="text-muted small mb-4">
+                                    High-quality finished products including bed linen, institutional textiles, and basic apparel collections.
+                                </p>
+                                <ul class="list-unstyled text-muted small mb-4">
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Bed Sheets & Duvets</li>
+                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Institutional Linens</li>
+                                    <li><i class="fas fa-check text-gold me-2"></i>Custom Private Labeling</li>
+                                </ul>
+                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Call to Action -->
+    <section class="py-5 mb-5">
+        <div class="container">
+            <div class="glass-panel p-5 text-center animate-on-scroll">
+                <h2 class="text-white mb-4">Need Custom Textile Solutions?</h2>
+                <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">
+                    We specialize in delivering bespoke textile products that meet your exact count, construction, and design specifications.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'main:contact' %}" class="btn btn-primary-3d">Contact Sales</a>
+                    <a href="{% url 'main:about' %}" class="btn btn-outline-light rounded-pill px-5">Our Process</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
