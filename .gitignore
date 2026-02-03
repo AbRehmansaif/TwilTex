@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyo
+*.pyd
+*.whl
+dist/
+build/
+.eggs/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Django Stuff
+*.log
+*.pot
+*.pyc
+*.mo
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Environment Variables
+.env
+*.env
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Migrations (optional – keep if you don’t want to push)
+# */migrations/
+# !*/migrations/__init__.py
+
+# Coverage / Testing
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*,cover
+.cache
+.pytest_cache/
+nosetests.xml
+.junit.xml
+test.db
