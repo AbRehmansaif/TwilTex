@@ -40,49 +40,12 @@
                     </div>
                     {% endfor %}
                 {% else %}
-                    <!-- Default Services (shown when no services in database) -->
-                    <!-- Service 1 -->
-                    <div class="col-lg-4">
-                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Yarn" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4 bg-transparent">
-                                <h3 class="text-white mb-2 fw-normal">Yarn Manufacturing</h3>
-                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
-                                <p class="text-muted small mb-4">High-tensile strength yarn production using ring spinning technology.</p>
-                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 2 -->
-                    <div class="col-lg-4">
-                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dyeing" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4 bg-transparent">
-                                <h3 class="text-white mb-2 fw-normal">Fabric Dyeing</h3>
-                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
-                                <p class="text-muted small mb-4">Eco-friendly pigment and reactive dyeing processes.</p>
-                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Service 3 -->
-                    <div class="col-lg-4">
-                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1563837712359-1667f31458e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Printing" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4 bg-transparent">
-                                <h3 class="text-white mb-2 fw-normal">Textile Printing</h3>
-                                <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
-                                <p class="text-muted small mb-4">Digital and rotary printing services for complex patterns.</p>
-                                <a href="{% url 'main:contact' %}" class="btn btn-sm btn-outline-light rounded-pill px-4">Contact Us</a>
-                            </div>
+                    <div class="col-12 text-center py-5">
+                        <div class="glass-panel p-5 d-inline-block">
+                            <i class="fas fa-tools fa-3x text-gold mb-4"></i>
+                            <h3 class="text-white">Our Services are Coming Soon</h3>
+                            <p class="text-muted">We are currently detailing our specialized textile sourcing and procurement services.</p>
+                            <a href="{% url 'main:contact' %}" class="btn btn-primary-3d mt-3">Contact Support</a>
                         </div>
                     </div>
                 {% endif %}

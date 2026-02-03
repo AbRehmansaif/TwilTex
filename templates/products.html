@@ -50,67 +50,12 @@
                     </div>
                     {% endfor %}
                 {% else %}
-                    <!-- Default Products (shown when no products in database) -->
-                    <!-- Product 1: Yarn -->
-                    <div class="col-lg-4 animate-on-scroll delay-100">
-                        <div class="card-3d h-100">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Premium Yarn" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-white h4 mb-3">Industrial Yarns</h3>
-                                <p class="text-muted small mb-4">
-                                    Our yarns are available in 100% Cotton, Polyester, and specialized blends. Engineered for high-speed weaving and knitting.
-                                </p>
-                                <ul class="list-unstyled text-muted small mb-4">
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Ring Spun & Compact</li>
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Open End Yarns</li>
-                                    <li><i class="fas fa-check text-gold me-2"></i>Fancy & Slub Yarns</li>
-                                </ul>
-                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 2: Fabrics -->
-                    <div class="col-lg-4 animate-on-scroll delay-200">
-                        <div class="card-3d h-100">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Luxury Fabrics" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-white h4 mb-3">Premium Fabrics</h3>
-                                <p class="text-muted small mb-4">
-                                    Diverse range of greige, dyed, and printed fabrics catering to fashion, home, and industrial sectors.
-                                </p>
-                                <ul class="list-unstyled text-muted small mb-4">
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Twill, Sateen & Percale</li>
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Organic & Recycled</li>
-                                    <li><i class="fas fa-check text-gold me-2"></i>Digital Print Base</li>
-                                </ul>
-                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 3: Garments/Made-ups -->
-                    <div class="col-lg-4 animate-on-scroll delay-300">
-                        <div class="card-3d h-100">
-                            <div class="img-reveal">
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="Textile Made-ups" class="img-fluid card-img-250">
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-white h4 mb-3">Finished Made-ups</h3>
-                                <p class="text-muted small mb-4">
-                                    High-quality finished products including bed linen, institutional textiles, and basic apparel collections.
-                                </p>
-                                <ul class="list-unstyled text-muted small mb-4">
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Bed Sheets & Duvets</li>
-                                    <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Institutional Linens</li>
-                                    <li><i class="fas fa-check text-gold me-2"></i>Custom Private Labeling</li>
-                                </ul>
-                                <a href="{% url 'main:contact' %}" class="btn btn-primary-3d w-100">Contact Us</a>
-                            </div>
+                    <div class="col-12 text-center py-5 animate-on-scroll">
+                        <div class="glass-panel p-5 d-inline-block">
+                            <i class="fas fa-box-open fa-3x text-gold mb-4"></i>
+                            <h3 class="text-white">Our Collection is Coming Soon</h3>
+                            <p class="text-muted">We are currently updating our product catalog with the latest premium textile solutions.</p>
+                            <a href="{% url 'main:contact' %}" class="btn btn-primary-3d mt-3">Inquire for Bulk Orders</a>
                         </div>
                     </div>
                 {% endif %}
