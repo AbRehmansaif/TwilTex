@@ -24,23 +24,34 @@
                 <div class="col-lg-7">
                     <div class="glass-panel p-5 h-100">
                         <h4 class="text-white mb-4 fw-light">Send us a Message</h4>
-                        <form id="contactForm">
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mb-4 glass-panel" role="alert" style="border-radius: 12px; border-color: rgba(255, 215, 0, 0.4);">
+                                    <span class="text-white">{{ message }}</span>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form id="contactForm" method="POST" action="{% url 'main:contact' %}">
+                            {% csrf_token %}
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingFirstName" placeholder="John">
+                                        <input type="text" class="form-control" id="floatingFirstName" name="first_name" placeholder="John" required value="{{ first_name|default:'' }}">
                                         <label for="floatingFirstName" class="text-muted">First Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingLastName" placeholder="Doe">
+                                        <input type="text" class="form-control" id="floatingLastName" name="last_name" placeholder="Doe" required value="{{ last_name|default:'' }}">
                                         <label for="floatingLastName" class="text-muted">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+                                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com" value="{{ email|default:'' }}">
                                         <label for="floatingEmail" class="text-muted">Email Address</label>
                                     </div>
                                 </div>
@@ -48,7 +59,7 @@
                                     <div class="input-group mb-3 h-100">
                                         <div class="position-relative" style="width: 35%;">
                                             <div class="custom-select-wrapper" id="countryCodeWrapper">
-                                                 <input type="hidden" id="selectedCountryCode" value="+92">
+                                                 <input type="hidden" id="selectedCountryCode" name="country_code" value="+92">
                                                  <button type="button" class="btn-custom-select form-control d-flex align-items-center justify-content-between" style="height: 58px;">
                                                     <span id="codeDisplay">🇵🇰 +92</span>
                                                     <i class="fas fa-chevron-down small"></i>
@@ -57,25 +68,25 @@
                                             </div>
                                         </div>
                                         <div class="form-floating" style="width: 65%;">
-                                            <input type="tel" class="form-control" id="floatingPhone" placeholder="300 1234567">
+                                            <input type="tel" class="form-control" id="floatingPhone" name="phone" placeholder="300 1234567" value="{{ phone|default:'' }}">
                                             <label for="floatingPhone" class="text-muted">Mobile No</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect">
-                                            <option selected class="text-dark">General Inquiry</option>
-                                            <option value="1" class="text-dark">Sales & Quotes</option>
-                                            <option value="2" class="text-dark">Support</option>
-                                            <option value="3" class="text-dark">Careers</option>
+                                        <select class="form-select" id="floatingSelect" name="subject">
+                                            <option value="General Inquiry" {% if subject == 'General Inquiry' %}selected{% endif %} class="text-dark">General Inquiry</option>
+                                            <option value="Sales & Quotes" {% if subject == 'Sales & Quotes' %}selected{% endif %} class="text-dark">Sales & Quotes</option>
+                                            <option value="Support" {% if subject == 'Support' %}selected{% endif %} class="text-dark">Support</option>
+                                            <option value="Careers" {% if subject == 'Careers' %}selected{% endif %} class="text-dark">Careers</option>
                                         </select>
                                         <label for="floatingSelect" class="text-muted">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"></textarea>
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="message" style="height: 150px;" required>{{ message|default:'' }}</textarea>
                                         <label for="floatingTextarea" class="text-muted">Message</label>
                                     </div>
                                 </div>

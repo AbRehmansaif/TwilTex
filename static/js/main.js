@@ -59,7 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnText = document.getElementById('btnText');
         const btnIcon = document.getElementById('btnIcon');
 
+        let isSubmitting = false;
         contactForm.addEventListener('submit', (e) => {
+            if (isSubmitting) return;
             e.preventDefault();
 
             // --- Validation Logic ---
@@ -101,22 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         updateBtn('Quality Check Passed!', 'fa-check-double');
                         setTimeout(() => {
-                            updateBtn('Message Sent!', 'fa-paper-plane');
-                            sendBtn.classList.remove('btn-primary-3d');
-                            sendBtn.classList.add('btn-success');
-                            contactForm.reset();
-                            // Reset dropdowns
-                            resetCustomDropdowns();
-                            setTimeout(() => {
-                                updateBtn('Send Message', 'fa-paper-plane');
-                                sendBtn.classList.remove('btn-success');
-                                sendBtn.classList.add('btn-primary-3d');
-                                sendBtn.disabled = false;
-                            }, 3000);
-                        }, 1500);
-                    }, 1500);
-                }, 1500);
-            }, 1500);
+                            updateBtn('Sending...', 'fa-paper-plane');
+                            isSubmitting = true;
+                            contactForm.submit();
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
         });
 
         function updateBtn(text, iconClass) {
