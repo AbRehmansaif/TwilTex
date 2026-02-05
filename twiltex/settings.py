@@ -29,7 +29,8 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = []
 
-
+# for production, set allowed hosts like this:
+# ALLOWED_HOSTS = ['IPv4-address', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
@@ -143,6 +144,16 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Media files settings
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# For Production
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
+
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # ==>                         Email Configuration (SMTP)        <== 
 # EMAIL_BACKEND = os.getenv(
