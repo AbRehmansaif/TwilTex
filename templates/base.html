@@ -41,6 +41,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'products:list' %}">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'services:list' %}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blogs:list' %}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:privacy' %}">Privacy</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
                 </ul>
@@ -88,6 +89,7 @@
                             <div class="col-6">
                                 <ul class="list-unstyled text-muted small mb-0">
                                     <li class="mb-2"><a href="{% url 'services:list' %}" class="text-decoration-none text-muted hover-gold transition-all">Services</a></li>
+                                    <li class="mb-2"><a href="{% url 'blogs:list' %}" class="text-decoration-none text-muted hover-gold transition-all">Blog</a></li>
                                     <li class="mb-2"><a href="{% url 'main:contact' %}" class="text-decoration-none text-muted hover-gold transition-all">Contact</a></li>
                                     <li class="mb-2"><a href="{% url 'main:privacy' %}" class="text-decoration-none text-muted hover-gold transition-all">Privacy</a></li>
                                 </ul>
@@ -103,6 +105,7 @@
                             <a href="{% url 'main:about' %}" class="mobile-nav-pill"><i class="fas fa-info-circle"></i> About</a>
                             <a href="{% url 'products:list' %}" class="mobile-nav-pill"><i class="fas fa-box"></i> Products</a>
                             <a href="{% url 'services:list' %}" class="mobile-nav-pill"><i class="fas fa-layer-group"></i> Services</a>
+                            <a href="{% url 'blogs:list' %}" class="mobile-nav-pill"><i class="fas fa-newspaper"></i> Blog</a>
                             <a href="{% url 'main:contact' %}" class="mobile-nav-pill"><i class="fas fa-envelope"></i> Contact</a>
                             <a href="{% url 'main:privacy' %}" class="mobile-nav-pill"><i class="fas fa-shield-alt"></i> Privacy</a>
                         </div>

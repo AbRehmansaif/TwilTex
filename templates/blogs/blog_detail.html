@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - {{ blog.title }}{% endblock %}
+
+{% block content %}
+    <!-- Blog Detail Hero -->
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 50vh; display: flex; align-items: center;">
+        <div class="container animate-on-scroll">
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+                <span class="text-gold">{{ blog.created_at|date:"F d, Y" }}</span>
+                <span class="text-secondary">|</span>
+                <span class="text-muted"><i class="fas fa-user-edit me-1"></i> By {{ blog.author.get_full_name|default:blog.author.username }}</span>
+            </div>
+            <h1 class="display-3 fw-bold text-shimmer mb-4">{{ blog.title }}</h1>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <article class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="glass-panel p-4 p-md-5 animate-on-scroll">
+                        {% if blog.image %}
+                            <div class="mb-5 rounded overflow-hidden shadow-lg">
+                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid w-100">
+                            </div>
+                        {% endif %}
+                        
+                        <div class="blog-body text-white lead" style="line-height: 1.8;">
+                            {{ blog.content|linebreaks }}
+                        </div>
+
+                        <hr class="my-5 border-secondary">
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'blogs:list' %}" class="btn btn-outline-light rounded-pill">
+                                <i class="fas fa-arrow-left me-2"></i> Back to Blog
+                            </a>
+                            <!-- <div class="share-links">
+                                <span class="text-muted small me-3">Share:</span>
+                                <a href="#" class="text-white me-3 hover-gold"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="text-white me-3 hover-gold"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="text-white hover-gold"><i class="fab fa-linkedin-in"></i></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}

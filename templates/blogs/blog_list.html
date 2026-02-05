@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Twil Tex - Blog{% endblock %}
+
+{% block meta_description %}Read the latest insights and updates from Twil Tex Industries, a global leader in industrial textile procurement.{% endblock %}
+
+{% block content %}
+    <!-- Blog Hero -->
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; align-items: center;">
+        <div class="container animate-on-scroll">
+             <h1 class="display-3 fw-bold text-shimmer mb-4">Our Blog</h1>
+             <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Explore the latest trends, news, and industrial insights from the world of textiles.
+             </p>
+        </div>
+    </header>
+
+    <!-- Blog Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                {% if page_obj %}
+                    {% for blog in page_obj %}
+                    <div class="col-lg-4 animate-on-scroll delay-{{ forloop.counter }}00">
+                        <div class="card-3d h-100">
+                            <div class="img-reveal">
+                                {% if blog.image %}
+                                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid card-img-250">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&q=80&w=800" alt="{{ blog.title }}" class="img-fluid card-img-250">
+                                {% endif %}
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="text-gold small">{{ blog.created_at|date:"F d, Y" }}</span>
+                                    <span class="text-muted small"><i class="fas fa-user-edit me-1"></i> {{ blog.author.get_full_name|default:blog.author.username }}</span>
+                                </div>
+                                <h3 class="text-white h4 mb-3">{{ blog.title }}</h3>
+                                <p class="text-muted small mb-4">
+                                    {{ blog.content|truncatewords:20 }}
+                                </p>
+                                <a href="{% url 'blogs:detail' blog.pk %}" class="btn btn-primary-3d w-100">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12 text-center py-5 animate-on-scroll">
+                        <div class="glass-panel p-5 d-inline-block">
+                            <i class="fas fa-newspaper fa-3x text-gold mb-4"></i>
+                            <h3 class="text-white">No Blog Posts Yet</h3>
+                            <p class="text-muted">We're working on some exciting content for you. Check back soon!</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+            <nav aria-label="Blog pagination" class="mt-5">
+                <ul class="pagination justify-content-center custom-pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .custom-pagination .page-link {
+        background-color: var(--bg-glass);
+        border: 1px solid var(--glass-border);
+        color: var(--text-muted);
+        margin: 0 5px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    .custom-pagination .page-item.active .page-link {
+        background: var(--gradient-primary);
+        border-color: transparent;
+        color: white;
+    }
+    .custom-pagination .page-link:hover {
+        background-color: var(--accent-gold);
+        color: var(--dark-bg);
+        border-color: var(--accent-gold);
+    }
+    .custom-pagination .page-item.disabled .page-link {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+{% endblock %}

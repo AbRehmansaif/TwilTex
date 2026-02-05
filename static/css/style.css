@@ -159,13 +159,20 @@ body::before {
     background: rgba(0, 0, 0, 0.85); /* Darker navbar */
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center; /* vertically center items */
+    height: 70px; /* adjust navbar height if needed */
+    padding: 0 20px;
 }
 
 .navbar-brand {
+    display: flex;
+    align-items: center; /* vertically center logo with text */
+    gap: 10px; /* space between logo and text */
     font-weight: 700;
     letter-spacing: 1px;
     color: #fff !important;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* adjust text size */
 }
 
 .nav-link {
