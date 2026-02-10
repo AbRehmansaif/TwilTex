@@ -176,7 +176,7 @@ body::before {
 }
 
 .navbar-logo {
-    height: 110px !important;
+    height: 92px !important;
     max-height: 120px !important;
     width: auto !important;
     object-fit: contain;
@@ -1052,5 +1052,45 @@ footer {
     @keyframes scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(calc(-140px * 14 - 30px * 14)); } /* (width + gap) * 14 */
+    }
+}
+
+/* Mobile Navbar Dropdown Styling */
+@media (max-width: 991px) {
+    .navbar {
+        height: 100px !important;
+    }
+
+    .navbar-collapse {
+        background: rgba(5, 5, 5, 0.98); 
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        height: auto !important; /* Allow expansion */
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: #e0e0e0;
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .navbar-nav .nav-link:hover, 
+    .navbar-nav .nav-link.active {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent-gold) !important;
     }
 }
