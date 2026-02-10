@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key")
 # DEBUG = True
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["twiltex.com", "www.twiltex.com", "38.242.254.102"]
 
 # for production, set allowed hosts like this:
 # ALLOWED_HOSTS = ['IPv4-address', 'localhost']
