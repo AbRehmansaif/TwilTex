@@ -18,15 +18,15 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_active', 'display_order', 'created_at')
-    list_filter = ('is_active', 'created_at')
+    list_display = ('name', 'service', 'is_active', 'display_order', 'created_at')
+    list_filter = ('service', 'is_active', 'created_at')
     search_fields = ('name', 'short_description')
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImageInline]
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('name', 'slug', 'short_description', 'card_points')
+            'fields': ('name', 'slug', 'service', 'short_description', 'card_points')
         }),
         ('Detail Page Content', {
             'fields': ('detail_description', 'detail_points')

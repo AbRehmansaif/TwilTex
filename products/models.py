@@ -5,6 +5,7 @@ class Product(models.Model):
     # Main product information
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
+    service = models.ForeignKey('services.Service', on_delete=models.SET_NULL, null=True, blank=True, related_name='products')
     short_description = models.TextField(help_text="Brief description shown on product card")
     
     # Points for product card (comma separated, will be split)
