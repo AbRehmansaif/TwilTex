@@ -1094,3 +1094,45 @@ footer {
         color: var(--accent-gold) !important;
     }
 }
+/* Glass Pagination */
+.glass-pagination {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-muted) !important;
+    border-radius: 12px !important;
+    padding: 10px 18px !important;
+    transition: all 0.3s ease !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glass-pagination:hover {
+    background: rgba(255, 215, 0, 0.1) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.glass-pagination.active {
+    background: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: #000 !important;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.page-item.active .glass-pagination {
+    background: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: #000 !important;
+}
+
+.page-item.disabled .glass-pagination {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
