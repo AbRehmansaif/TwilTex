@@ -1180,3 +1180,80 @@ footer {
     box-shadow: none !important;
     outline: none !important;
 }
+
+/* --- Pure Mobile Responsiveness Layer --- */
+@media (max-width: 767.98px) {
+    /* Typography Scaling */
+    .display-1 { font-size: 2.8rem !important; }
+    .display-2 { font-size: 2.4rem !important; }
+    .display-3 { font-size: 2.1rem !important; }
+    .display-4 { font-size: 1.8rem !important; }
+    .display-5 { font-size: 1.6rem !important; }
+    
+    h1 { font-size: 1.75rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.25rem !important; }
+
+    /* Container & Section Fine-tuning */
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    /* Component Adjustments */
+    .glass-panel {
+        padding: 1.5rem !important; /* Uniform mobile padding */
+        margin-bottom: 1rem;
+    }
+
+    /* Search Bar Mobile */
+    .search-form-premium .input-group {
+        padding: 5px !important;
+    }
+    
+    .search-form-premium .input-group button {
+        padding: 8px 15px !important;
+        font-size: 0.85rem;
+    }
+
+    /* Navigation Pills (Horizontal scroll optimization) */
+    .mobile-nav-scroll {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+        justify-content: flex-start !important;
+        scrollbar-width: none;
+    }
+    
+    .mobile-nav-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .mobile-nav-pill {
+        white-space: nowrap !important;
+        padding: 12px 20px !important;
+    }
+
+    /* Blog & Product Info Stacking */
+    .img-reveal img {
+        height: 200px !important;
+    }
+
+    /* Centering Helpers */
+    .mobile-text-center {
+        text-align: center !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .display-3 { font-size: 3rem !important; }
+    .glass-panel { padding: 2.5rem !important; }
+}
