@@ -1,126 +1,227 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Twil Tex - Blog{% endblock %}
+{% block title %}Textile Industry Insights & Blog | TwilTex{% endblock %}
 
-{% block meta_description %}Read the latest insights and updates from Twil Tex Industries, a global leader in industrial textile procurement.{% endblock %}
+{% block meta_description %}Read the latest insights, trends, and news from the textile industry. TwilTex's blog covers B2B sourcing, manufacturing, and global textile market updates.{% endblock %}
+
+{% block meta_keywords %}textile blog, textile industry insights, B2B fabric sourcing news, yarn manufacturing trends, textile market updates, TwilTex blog{% endblock %}
+
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Textile Industry Blog - TwilTex">
+<meta property="og:description" content="Read the latest insights, trends, and news from the global textile industry.">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:site_name" content="TwilTex">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/mainimages/logo.png' %}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Textile Industry Blog - TwilTex">
+<meta name="twitter:description" content="Read the latest insights and trends from the global textile industry.">
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "TwilTex Textile Industry Blog",
+  "description": "Insights, trends, and news from the global textile industry.",
+  "url": "{{ request.build_absolute_uri }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TwilTex",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/mainimages/logo.png' %}"
+    }
+  },
+  "blogPost": [
+    {% for post in posts %}
+    {
+      "@type": "BlogPosting",
+      "headline": "{{ post.title|escapejs }}",
+      "description": "{{ post.excerpt|escapejs }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}{{ post.get_absolute_url }}",
+      "datePublished": "{{ post.created_at|date:'c' }}",
+      "dateModified": "{{ post.updated_at|date:'c' }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ post.author.get_full_name|default:post.author.username|escapejs }}"
+      }{% if post.featured_image %},
+      "image": "{{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}"
+      {% endif %}
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
+<div itemscope itemtype="https://schema.org/Blog">
+    <meta itemprop="name" content="TwilTex Textile Industry Blog">
+
     <!-- Blog Hero -->
-    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; align-items: center;">
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="container mt-4 mb-3 text-start">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">Blog</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+        </div>
         <div class="container animate-on-scroll">
-             <h1 class="display-3 fw-bold text-shimmer mb-4">Our Blog</h1>
-             <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            <span class="text-gold text-uppercase tracking-wider small fw-bold">Industry Insights</span>
+            <h1 class="display-3 fw-bold text-shimmer mb-4">Our Blog</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
                 Explore the latest trends, news, and industrial insights from the world of textiles.
-             </p>
+            </p>
         </div>
     </header>
 
+    <!-- Category Filter -->
+    {% if categories %}
+    <section class="py-4 border-bottom border-secondary" aria-label="Blog Categories">
+        <div class="container">
+            <nav aria-label="Blog Category Filter">
+                <ul class="nav nav-pills justify-content-center gap-2 flex-wrap" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="mobile-nav-pill border-0 {% if not request.GET.category %}active{% endif %}"
+                           href="{% url 'blogs:blog_list' %}">
+                            <i class="fas fa-th-large me-1" aria-hidden="true"></i> All Posts
+                        </a>
+                    </li>
+                    {% for category in categories %}
+                    <li class="nav-item" role="presentation">
+                        <a class="mobile-nav-pill border-0 {% if request.GET.category == category.slug %}active{% endif %}"
+                           href="?category={{ category.slug }}">
+                            <i class="fas fa-tag me-1" aria-hidden="true"></i> {{ category.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </section>
+    {% endif %}
+
     <!-- Blog Grid -->
-    <section class="py-5">
+    <section class="py-5" aria-label="Blog Posts">
         <div class="container">
             <div class="row g-4 g-lg-5">
-                {% if page_obj %}
-                    {% for blog in page_obj %}
-                    <div class="col-lg-4 animate-on-scroll delay-{{ forloop.counter }}00">
-                        <div class="card-3d h-100">
+                {% if posts %}
+                    {% for post in posts %}
+                    <div class="col-lg-4 animate-on-scroll">
+                        <article class="card-3d h-100" itemscope itemtype="https://schema.org/BlogPosting">
                             <div class="img-reveal">
-                                {% if blog.image %}
-                                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid card-img-250">
+                                {% if post.featured_image %}
+                                    <img src="{{ post.featured_image.url }}"
+                                         alt="{{ post.alt_text|default:post.title }}"
+                                         class="img-fluid card-img-250 w-100"
+                                         loading="lazy" decoding="async" width="400" height="250"
+                                         style="object-fit: cover;"
+                                         itemprop="image">
                                 {% else %}
-                                    <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&q=80&w=800" alt="{{ blog.title }}" class="img-fluid card-img-250">
+                                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800"
+                                         alt="{{ post.title }} - Textile Industry Insights"
+                                         class="img-fluid card-img-250 w-100"
+                                         loading="lazy" decoding="async" width="400" height="250"
+                                         style="object-fit: cover;">
                                 {% endif %}
                             </div>
                             <div class="p-4">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="text-gold small">{{ blog.created_at|date:"F d, Y" }}</span>
-                                    <span class="text-muted small"><i class="fas fa-user-edit me-1"></i> {{ blog.author.get_full_name|default:blog.author.username }}</span>
+                                <!-- Meta Row -->
+                                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                                    {% if post.category %}
+                                    <a href="?category={{ post.category.slug }}"
+                                       class="badge text-decoration-none"
+                                       style="background: rgba(212,175,55,0.2); color: var(--accent-gold); border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem;"
+                                       itemprop="articleSection">
+                                        {{ post.category.name }}
+                                    </a>
+                                    {% endif %}
+                                    <span class="text-muted small">
+                                        <i class="fas fa-clock me-1 text-gold" aria-hidden="true"></i>
+                                        {{ post.reading_time }} min read
+                                    </span>
                                 </div>
-                                <h3 class="text-white h4 mb-3">{{ blog.title }}</h3>
-                                <p class="text-muted small mb-4">
-                                    {{ blog.content|truncatewords:20 }}
+
+                                <h2 class="text-white h4 mb-3" itemprop="headline">{{ post.title }}</h2>
+
+                                <p class="text-muted small mb-3" itemprop="description">
+                                    {{ post.excerpt|truncatewords:22 }}
                                 </p>
-                                <a href="{% url 'blogs:detail' blog.pk %}" class="btn btn-primary-3d w-100">Read More</a>
+
+                                <!-- Author + Date -->
+                                <div class="d-flex align-items-center gap-2 mb-4 text-muted small">
+                                    <i class="fas fa-user-circle text-gold" aria-hidden="true"></i>
+                                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                        <span itemprop="name">{{ post.author.get_full_name|default:post.author.username }}</span>
+                                    </span>
+                                    <span class="text-secondary">·</span>
+                                    <time datetime="{{ post.created_at|date:'Y-m-d' }}" itemprop="datePublished">
+                                        {{ post.created_at|date:"M d, Y" }}
+                                    </time>
+                                </div>
+
+                                <a href="{{ post.get_absolute_url }}"
+                                   class="btn btn-primary-3d w-100"
+                                   title="Read: {{ post.title }}"
+                                   itemprop="url">
+                                    Read More <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                                </a>
                             </div>
-                        </div>
+                        </article>
                     </div>
                     {% endfor %}
                 {% else %}
                     <div class="col-12 text-center py-5 animate-on-scroll">
                         <div class="glass-panel p-5 d-inline-block">
-                            <i class="fas fa-newspaper fa-3x text-gold mb-4"></i>
-                            <h3 class="text-white">No Blog Posts Yet</h3>
+                            <i class="fas fa-newspaper fa-3x text-gold mb-4" aria-hidden="true"></i>
+                            <h2 class="text-white h3">No Blog Posts Yet</h2>
                             <p class="text-muted">We're working on some exciting content for you. Check back soon!</p>
+                            <a href="{% url 'main:contact' %}" class="btn btn-primary-3d mt-3">Get in Touch</a>
                         </div>
                     </div>
                 {% endif %}
             </div>
 
             <!-- Pagination -->
-            {% if page_obj.has_other_pages %}
+            {% if is_paginated %}
             <nav aria-label="Blog pagination" class="mt-5">
-                <ul class="pagination justify-content-center custom-pagination">
+                <ul class="pagination justify-content-center gap-2">
                     {% if page_obj.has_previous %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <span class="page-link">&laquo;</span>
-                        </li>
+                        <li class="page-item"><a class="page-link glass-pagination" href="?page=1" aria-label="First">&laquo;&laquo;</a></li>
+                        <li class="page-item"><a class="page-link glass-pagination" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
                     {% endif %}
 
-                    {% for i in page_obj.paginator.page_range %}
-                        {% if page_obj.number == i %}
-                            <li class="page-item active"><span class="page-link">{{ i }}</span></li>
-                        {% else %}
-                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active" aria-current="page"><span class="page-link glass-pagination">{{ num }}</span></li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item"><a class="page-link glass-pagination" href="?page={{ num }}">{{ num }}</a></li>
                         {% endif %}
                     {% endfor %}
 
                     {% if page_obj.has_next %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <span class="page-link">&raquo;</span>
-                        </li>
+                        <li class="page-item"><a class="page-link glass-pagination" href="?page={{ page_obj.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                        <li class="page-item"><a class="page-link glass-pagination" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">&raquo;&raquo;</a></li>
                     {% endif %}
                 </ul>
             </nav>
             {% endif %}
         </div>
     </section>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-    .custom-pagination .page-link {
-        background-color: var(--bg-glass);
-        border: 1px solid var(--glass-border);
-        color: var(--text-muted);
-        margin: 0 5px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-    }
-    .custom-pagination .page-item.active .page-link {
-        background: var(--gradient-primary);
-        border-color: transparent;
-        color: white;
-    }
-    .custom-pagination .page-link:hover {
-        background-color: var(--accent-gold);
-        color: var(--dark-bg);
-        border-color: var(--accent-gold);
-    }
-    .custom-pagination .page-item.disabled .page-link {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.2);
-    }
-</style>
+</div>
 {% endblock %}
