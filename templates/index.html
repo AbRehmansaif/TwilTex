@@ -97,8 +97,9 @@
 {% endblock %}
 
 {% block content %}
+    <main id="main-content">
     <!-- Hero Carousel Section -->
-    <header class="hero-section">
+    <section class="hero-section" aria-label="Hero Carousel">
         <div class="container overflow-visible">
             <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
                 <!-- Indicators -->
@@ -122,11 +123,11 @@
                                     Twil Tex, a Pakistan-based textile sourcing agency, helps international buyers source high-quality Home, Hospitality, and Healthcare textiles with expert-managed production, strict quality control, and on-time delivery worldwide.
                                 </p>
                                 <div class="hero-actions">
-                                    <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold">Contact Us</a>
+                                    <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold" title="Contact Twil Tex for bulk textile sourcing" aria-label="Contact Twil Tex for bulk textile sourcing">Contact Us</a>
                                 </div>
                             </div>
                             <div class="hero-image-side">
-                                <img src="{% static 'images/mainimages/img3.webp' %}" alt="Sustainable Cotton Production">
+                                <img src="{% static 'images/mainimages/img3.webp' %}" alt="Faisalabad Textile Sourcing Hub - Sustainable Production" loading="eager" fetchpriority="high">
                                 <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
                                     <!-- <h5 class="m-0 text-white">Organic Harvest</h5> -->
                                     <!-- <small class="text-gold">Pure. Natural. Ethical. </small> -->
@@ -148,11 +149,11 @@
                                     Our mission is to provide international buyers with high-quality textiles from Pakistan, managed by dedicated experts for smooth production, strict quality control, and reliable, on-time delivery worldwide.
                                 </p>
                                 <div class="hero-actions">
-                                    <a href="{% url 'main:about' %}" class="btn-premium btn-premium-gold">Who We Are</a>
+                                    <a href="{% url 'main:about' %}" class="btn-premium btn-premium-gold" title="Learn about our textile sourcing agency" aria-label="Learn about our textile sourcing agency">Who We Are</a>
                                 </div>
                             </div>
                             <div class="hero-image-side">
-                                <img src="{% static 'images/mainimages/img1.webp' %}" alt="Luxury Fabric Texture">
+                                <img src="{% static 'images/mainimages/img1.webp' %}" alt="Premium Hotel Linen and Wholesale Fabric Textures" loading="eager">
                                 <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
                                     <!-- <h5 class="m-0 text-white">Royal Silk Series</h5> -->
                                     <!-- <small class="text-gold">Excellence in Silk</small> -->
@@ -174,11 +175,11 @@
                                     From Home linens to Hospitality and Healthcare products, Twil Tex guarantees exceptional quality, on-time delivery, and long term partnership for buyers worldwide.
                                 </p>
                                 <div class="hero-actions">
-                                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold">Our Products</a>
+                                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold" title="View our textile product categories" aria-label="View our textile product categories">Our Products</a>
                                 </div>
                             </div>
                             <div class="hero-image-side">
-                                <img src="{% static 'images/mainimages/img2.webp' %}" alt="Modern Textile Factory">
+                                <img src="{% static 'images/mainimages/img2.webp' %}" alt="Quality Controlled Bulk Towel Production Facility" loading="eager">
                                 <div class="p-4 position-absolute bottom-0 start-0 w-100" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
                                     <!-- <h5 class="m-0 text-white">World Delivery</h5> -->
                                     <!-- <small class="text-gold">Direct from Faisalabad</small> -->
@@ -200,13 +201,14 @@
             </div>
         </div>
     </header>
+    </section>
 
     <!-- Additional Overview Section -->
-    <header class="hero-section position-relative d-flex align-items-center" style="min-height: 85vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/mainimages/img3.webp' %}') no-repeat center center/cover;">
+    <section class="hero-section position-relative d-flex align-items-center" style="min-height: 85vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/mainimages/img3.webp' %}') no-repeat center center/cover;" aria-labelledby="overview-title">
         <div class="container py-5 mt-5 z-1">
             <div class="row">
                 <div class="col-lg-10 mx-auto text-center animate__animated animate__fadeInUp">
-                    <h1 class="display-4 fw-bold text-white mb-4">
+                    <h1 id="overview-title" class="display-4 fw-bold text-white mb-4">
                         Wholesale Fabric Sourcing & Hotel Linen Supplier <br>
                         <span class="text-gold">from Faisalabad, Pakistan</span>
                     </h1>
@@ -214,30 +216,30 @@
                         TwilTex sources home, hospitality, and medical textiles for import businesses, hotel groups, and private label brands across the UK, USA, Europe, and Spain, with in-house quality control on every shipment.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-3 fs-5 text-decoration-none">Request a Quote</a>
-                        <a href="{% static 'catalog.pdf' %}" class="btn btn-outline-light px-5 py-3 fs-5" style="border-width: 2px;">Download Product Catalog</a>
+                        <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-3 fs-5 text-decoration-none" title="Request a bulk sourcing quote" aria-label="Request a bulk sourcing quote">Request a Quote</a>
+                        <a href="{% static 'catalog.pdf' %}" class="btn btn-outline-light px-5 py-3 fs-5" style="border-width: 2px;" title="Download Twil Tex Product Catalog" aria-label="Download Twil Tex Product Catalog">Download Product Catalog</a>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- Trust Strip -->
-    <div class="bg-dark py-3 border-bottom border-secondary">
+    <section aria-label="Certifications and Standards" class="bg-dark py-3 border-bottom border-secondary">
         <div class="container text-center">
             <p class="text-white-50 mb-0 tracking-wider small text-uppercase fw-semibold">
                 Aligned with ISO 9001 <span class="text-gold mx-2">•</span> OEKO-TEX Standard 100 <span class="text-gold mx-2">•</span> GOTS <span class="text-gold mx-2">•</span> BCI Cotton <span class="text-gold mx-2">•</span> Sedex Principles
             </p>
         </div>
-    </div>
+    </section>
 
     <!-- Who We Are Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="who-we-are-title">
         <div class="container py-5">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 animate-on-scroll delay-100">
                     <span class="text-gold text-uppercase tracking-wider fw-bold">Who We Are</span>
-                    <h2 class="display-6 mt-2 mb-4 text-white">A Wholesale Fabric Sourcing hub Built for Import Buyers, Not Just Local Retail</h2>
+                    <h2 id="who-we-are-title" class="display-6 mt-2 mb-4 text-white">A Wholesale Fabric Sourcing hub Built for Import Buyers, Not Just Local Retail</h2>
                     <p class="text-muted mb-4 fs-5" style="line-height: 1.8;">
                         Twil Tex has operated out of Khurrianwala, Faisalabad — Pakistan's largest textile sourcing hub, since 2004, starting as a family-run textile business. Today, led by Founder & CEO Usama Zafar, we coordinate production through a trusted network of partner mills for buyers who need consistent bulk output: hotel groups replacing linen fleets, importers building private label bedding lines, and healthcare distributors sourcing compliant medical textiles.
                     </p>
@@ -247,7 +249,7 @@
                 </div>
                 <div class="col-lg-6 animate-on-scroll delay-200">
                     <div class="position-relative">
-                        <img src="{% static 'images/mainimages/img1.webp' %}" alt="Twil Tex Sourcing" class="img-fluid rounded shadow-lg border border-secondary w-100">
+                        <img src="{% static 'images/mainimages/img1.webp' %}" alt="Twil Tex Sourcing Operations in Faisalabad, Pakistan" class="img-fluid rounded shadow-lg border border-secondary w-100" loading="lazy">
                         <div class="position-absolute bottom-0 start-0 p-4 bg-dark bg-opacity-75 rounded-bottom w-100" style="backdrop-filter: blur(5px);">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-check-circle text-gold fa-2x me-3"></i>
@@ -261,12 +263,12 @@
     </section>
 
     <!-- Creating Excellence / Features -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="expertise-title">
         <div class="container py-5">
             <div class="row text-center mb-5">
                 <div class="col-12">
                      <span class="text-gold text-uppercase tracking-wider fw-bold">Our Expertise</span>
-                    <h2 class="display-5 mt-2 fw-normal text-white">Crafting Excellence</h2>
+                    <h2 id="expertise-title" class="display-5 mt-2 fw-normal text-white">Crafting Excellence</h2>
                 </div>
             </div>
             
@@ -302,11 +304,11 @@
         </div>
     </section>
     <!-- Strategic Services Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="services-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">End-to-End Solutions</span>
-                <h2 class="display-5 mt-2 text-white">Our Strategic Services</h2>
+                <h2 id="services-title" class="display-5 mt-2 text-white">Our Strategic Services</h2>
             </div>
             
             <div class="row g-4 justify-content-center">
@@ -369,7 +371,6 @@
                             <i class="fas fa-tasks fa-2x"></i>
                         </div>
                         <h3 class="h5 text-white mb-2">Production Follow-up</h3>
-                        <span class="visually-hidden">Follow Up</span> <!-- Hidden booster for logic -->
                         <p class="text-muted small mb-0">Real time daily tracking of production milestones to ensure on time delivery.</p>
                     </div>
                 </div>
@@ -389,16 +390,16 @@
 
 
     <!-- Product Categories Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="product-categories-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">What We Source</span>
-                <h2 class="display-5 mt-2 text-white">Textile Categories We Source and Export</h2>
+                <h2 id="product-categories-title" class="display-5 mt-2 text-white">Textile Categories We Source and Export</h2>
                 <p class="text-muted mt-3 mx-auto" style="max-width: 800px;">
                     Each category page lists available GSM ranges, thread counts, standard sizes, and minimum order quantities upfront, so you can shortlist products without waiting on a quote email.
                 </p>
                 <div class="mt-4">
-                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold">Show All Products</a>
+                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold" title="Show all textile product categories" aria-label="Show all textile product categories">Show All Products</a>
                 </div>
             </div>
             
@@ -408,7 +409,7 @@
                     <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse d-flex flex-column">
                         {% if product.images.first %}
                         <div class="mb-4 mx-auto overflow-hidden rounded-circle" style="width: 100px; height: 100px; background: rgba(255,255,255,0.05);">
-                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-100 h-100 object-fit-cover">
+                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-100 h-100 object-fit-cover" loading="lazy">
                         </div>
                         {% else %}
                         <div class="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style="width: 100px; height: 100px; background: rgba(255,255,255,0.05);">
@@ -430,11 +431,11 @@
     </section>
 
     <!-- Why Buyers Source From Us (USPs) -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="usps-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">USPs</span>
-                <h2 class="display-5 mt-2 text-white">What Working With Twil Tex Actually Looks Like</h2>
+                <h2 id="usps-title" class="display-5 mt-2 text-white">What Working With Twil Tex Actually Looks Like</h2>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 animate-on-scroll delay-100">
@@ -478,11 +479,11 @@
     </section>
 
     <!-- How Sourcing With Us Works (Process) -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="process-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">Process</span>
-                <h2 class="display-5 mt-2 text-white">From Inquiry to Delivery: How We Manage Your Order</h2>
+                <h2 id="process-title" class="display-5 mt-2 text-white">From Inquiry to Delivery: How We Manage Your Order</h2>
             </div>
             
             <div class="row g-4 mt-4">
@@ -551,11 +552,11 @@
     </section>
 
     <!-- Services Overview Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="services-overview-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">Services Overview</span>
-                <h2 class="display-5 mt-2 text-white">Sourcing Services by Industry</h2>
+                <h2 id="services-overview-title" class="display-5 mt-2 text-white">Sourcing Services by Industry</h2>
             </div>
             
             <div class="row g-4 justify-content-center">
@@ -564,7 +565,7 @@
                     <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse d-flex flex-column">
                         <div class="mb-4 d-inline-block p-3 rounded-circle mx-auto" style="background: rgba(255,255,255,0.05); width: 80px; height: 80px;">
                             {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-100 h-100 object-fit-cover rounded-circle">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-100 h-100 object-fit-cover rounded-circle" loading="lazy">
                             {% else %}
                                 <i class="fas fa-cogs fa-2x text-gold mt-1"></i>
                             {% endif %}
@@ -584,16 +585,16 @@
     </section>
 
     <!-- Case Study Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="case-study-title">
         <div class="container py-5">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 animate-on-scroll delay-100">
                     <span class="text-gold text-uppercase tracking-wider fw-bold">Case Study</span>
-                    <h2 class="display-6 mt-2 mb-4 text-white">Monthly Container Shipments to Spain</h2>
+                    <h2 id="case-study-title" class="display-6 mt-2 mb-4 text-white">Monthly Container Shipments to Spain</h2>
                     <p class="text-muted mb-4 fs-5" style="line-height: 1.8;">
                         Twil Tex now ships multiple 40-foot containers a month to a hospitality textile distributor in Spain — bedsheets and towels manufactured to a locked specification, quality-checked, and shipped on a recurring monthly schedule without re-approving samples each time.
                     </p>
-                    <a href="{% url 'blogs:list' %}" class="btn-premium btn-premium-gold">Read the Full Case Study</a>
+                    <a href="{% url 'blogs:list' %}" class="btn-premium btn-premium-gold" title="Read Twil Tex Case Studies" aria-label="Read Twil Tex Case Studies">Read the Full Case Study</a>
                 </div>
                 <div class="col-lg-6 animate-on-scroll delay-200">
                     <div class="position-relative">
@@ -611,11 +612,11 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-5 position-relative">
+    <section class="py-5 position-relative" aria-labelledby="faq-title">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">FAQs</span>
-                <h2 class="display-5 mt-2 text-white">Frequently Asked Questions</h2>
+                <h2 id="faq-title" class="display-5 mt-2 text-white">Frequently Asked Questions</h2>
             </div>
             
             <div class="row justify-content-center">
@@ -725,11 +726,11 @@
     </section>
 
     <!-- Customer Reviews -->
-    <section class="py-5">
+    <section class="py-5" aria-labelledby="testimonials-title">
         <div class="container py-5">
              <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">Testimonials</span>
-                <h2 class="display-5 mt-2 text-white">What Our Clients Say</h2>
+                <h2 id="testimonials-title" class="display-5 mt-2 text-white">What Our Clients Say</h2>
             </div>
             
             <div class="row g-4">
@@ -794,11 +795,11 @@
     </section>
 
     <!-- Certifications Section -->
-    <section class="py-5 position-relative overflow-hidden">
+    <section class="py-5 position-relative overflow-hidden" aria-labelledby="certifications-title">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="text-gold text-uppercase tracking-wider fw-bold">Our Valuable</span>
-                <h2 class="display-5 mt-2 text-white">Certifications</h2>
+                <h2 id="certifications-title" class="display-5 mt-2 text-white">Certifications</h2>
             </div>
             
             <div class="cert-slider">
@@ -840,7 +841,7 @@
     </section>
 
     <!-- Final CTA Section -->
-    <section class="position-relative overflow-hidden pt-3 pb-5 mt-5">
+    <section class="position-relative overflow-hidden pt-3 pb-5 mt-5" aria-labelledby="cta-title">
         <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
         <div class="container py-5 position-relative z-1 text-center">
             <div class="glass-panel p-5 mx-auto border-0 position-relative" style="max-width: 850px; background: rgba(20, 20, 22, 0.7); box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
@@ -852,14 +853,81 @@
                         <i class="fas fa-paper-plane fa-2x text-gold"></i>
                     </span>
                 </div>
-                <h2 class="display-5 fw-bold text-white mb-4 tracking-wider">Ready to Get Started?</h2>
+                <h2 id="cta-title" class="display-5 fw-bold text-white mb-4 tracking-wider">Ready to Get Started?</h2>
                 <p class="text-muted fs-5 mb-5 mx-auto" style="max-width: 600px; line-height: 1.8;">
                     Join buyers worldwide who trust Twil Tex for consistent quality, bulk capacity, and reliable delivery. Let's discuss your requirements today.
                 </p>
-                <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-4 fs-5 rounded-pill shadow-lg border-0 d-inline-flex align-items-center justify-content-center text-uppercase fw-bold" style="letter-spacing: 1px; min-width: 250px;">
+                <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-4 fs-5 rounded-pill shadow-lg border-0 d-inline-flex align-items-center justify-content-center text-uppercase fw-bold" style="letter-spacing: 1px; min-width: 250px;" title="Contact Twil Tex for a bulk sourcing quote" aria-label="Contact Twil Tex for a bulk sourcing quote">
                     Contact Us Now <i class="fas fa-arrow-right ms-3"></i>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- FAQ JSON-LD Schema for GEO/AIO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a wholesale fabric sourcing agency in Pakistan actually do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A wholesale fabric sourcing agency sources raw cotton or synthetic fiber, then manages weaving, dyeing, and finishing through partner mills to produce fabric in bulk for buyers like retailers, hotels, and private label brands — ensuring quality without the overhead of direct manufacturing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the minimum order quantity (MOQ) for hotel linen from Twil Tex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our MOQ for standard hotel linen typically begins at industry-standard volumes (e.g., 500-1,000 pieces depending on the specific item and GSM). Please contact us directly with your exact requirements for a precise quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do hotels and hospitality buyers source linen from Pakistan instead of China or India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pakistan is one of the world's largest cotton producers, giving Faisalabad-based manufacturers direct access to raw cotton without import costs — typically resulting in lower prices for cotton-rich hospitality textiles like towels and bedsheets compared to countries that import cotton."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Twil Tex a manufacturer or a sourcing agent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Twil Tex is a textile sourcing and production management company. We coordinate production through a network of partner mills in Faisalabad, with our own team managing quality control from raw material to final shipment inspection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What certifications does Twil Tex work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our production is aligned with ISO 9001, OEKO-TEX Standard 100, GOTS, BCI, and Sedex principles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Twil Tex produce private label / custom-branded textiles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Custom packaging, woven or embroidered labels, and buyer-specific branding are available on bulk orders."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Twil Tex handle recurring/repeat orders, not just one-time bulk orders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we currently manage recurring monthly shipments, including multiple 40ft containers a month to hospitality buyers in Spain, using a locked specification approved once at the start of the partnership."
+          }
+        }
+      ]
+    }
+    </script>
+    </main>
 {% endblock %}
