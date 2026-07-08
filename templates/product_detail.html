@@ -1,87 +1,199 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ product.name }} - Twil Tex{% endblock %}
+{% block title %}{{ product.name }} | Premium Textile Manufacturing | Twil Tex{% endblock %}
 
-{% block meta_description %}{{ product.short_description }}{% endblock %}
+{% block meta_description %}Discover {{ product.name }}. {{ product.short_description|truncatechars:150 }} Premium quality textiles manufactured by Twil Tex for bulk and wholesale supply.{% endblock %}
+
+{% block meta_keywords %}{{ product.name|lower }}, wholesale {{ product.name|lower }}, {{ product.service.title|lower }} textiles, bulk fabric supplier, industrial textiles, Twil Tex{% endblock %}
+
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="{{ product.name }} - Twil Tex">
+<meta property="og:description" content="{{ product.short_description }}">
+{% if product.images.first %}
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.images.first.image.url }}">
+{% endif %}
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:site_name" content="Twil Tex">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ product.name }} - Twil Tex">
+<meta name="twitter:description" content="{{ product.short_description }}">
+{% if product.images.first %}
+<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.images.first.image.url }}">
+{% endif %}
+
+<!-- Schema.org JSON-LD for SEO & AI Overviews (GEO/AIO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.name|escapejs }}",
+  "image": [
+    {% for img in product.images.all %}
+    "{{ request.scheme }}://{{ request.get_host }}{{ img.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "description": "{{ product.detail_description|escapejs }}",
+  "sku": "{{ product.slug }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Twil Tex"
+  },
+  {% if product.service %}
+  "category": "{{ product.service.title|escapejs }}",
+  {% endif %}
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ request.build_absolute_uri }}",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition"
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
-    <!-- Breadcrumb -->
+<article itemscope itemtype="https://schema.org/Product">
+    <meta itemprop="name" content="{{ product.name }}">
+    <meta itemprop="description" content="{{ product.short_description }}">
+    {% if product.images.first %}
+    <meta itemprop="image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.images.first.image.url }}">
+    {% endif %}
+    <meta itemprop="sku" content="{{ product.slug }}">
+
+    <!-- Breadcrumb for SEO and Navigation -->
     <section class="pt-5 mt-5">
         <div class="container">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex">
-                    <li class="breadcrumb-item"><a href="{% url 'main:home' %}" class="text-decoration-none text-muted"><i class="fas fa-home me-1"></i>Home</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'products:list' %}" class="text-decoration-none text-muted">Products</a></li>
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'products:list' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <span itemprop="name">Products</span>
+                        </a>
+                        <meta itemprop="position" content="2" />
+                    </li>
                     {% if product.service %}
-                    <li class="breadcrumb-item"><a href="{% url 'products:list' %}" class="text-decoration-none text-muted">{{ product.service.title }}</a></li>
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'products:list' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <span itemprop="name">{{ product.service.title }}</span>
+                        </a>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">{{ product.name }}</span>
+                        <meta itemprop="position" content="4" />
+                    </li>
+                    {% else %}
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">{{ product.name }}</span>
+                        <meta itemprop="position" content="3" />
+                    </li>
                     {% endif %}
-                    <li class="breadcrumb-item active text-gold" aria-current="page">{{ product.name }}</li>
                 </ol>
             </nav>
         </div>
     </section>
 
-    <!-- Product Detail -->
-    <section class="py-4">
+    <!-- Product Detail - Core Content -->
+    <section class="py-4" id="product-details">
         <div class="container">
             <div class="row g-5">
+                <!-- Product Images (LCP Optimization) -->
                 <div class="col-lg-6">
                     {% if product.images.all %}
                         <div class="card-3d p-3">
-                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="img-fluid rounded">
+                            <img src="{{ product.images.first.image.url }}" 
+                                 alt="{{ product.name }} - Main Image" 
+                                 title="{{ product.name }}"
+                                 class="img-fluid rounded w-100"
+                                 fetchpriority="high"
+                                 decoding="sync"
+                                 loading="eager"
+                                 width="800" height="800" style="object-fit: cover; height: auto;">
                         </div>
                     {% endif %}
                 </div>
+                
+                <!-- Product Information -->
                 <div class="col-lg-6">
-                    <h1 class="display-4 text-white mb-4">{{ product.name }}</h1>
+                    <header>
+                        <h1 class="display-4 text-white mb-4" itemprop="name">{{ product.name }}</h1>
+                    </header>
                     
-                    <p class="text-muted mb-4">{{ product.detail_description }}</p>
+                    <p class="text-muted mb-4" itemprop="description" style="line-height: 1.8;">{{ product.detail_description }}</p>
                     
-                    <h4 class="text-white h6 mb-3">Key Features:</h4>
-                    <ul class="list-unstyled text-muted mb-4">
-                        {% for point in product.get_detail_points_list %}
-                            <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>{{ point }}</li>
-                        {% endfor %}
-                    </ul>
+                    <!-- Structured Sections for AIO / GEO -->
+                    <section id="key-features" class="mb-4">
+                        <h2 class="text-white h5 mb-3"><i class="fas fa-list-check text-gold me-2"></i>Key Features & Specifications</h2>
+                        <ul class="list-unstyled text-muted">
+                            {% for point in product.get_detail_points_list %}
+                                <li class="mb-2 d-flex align-items-start">
+                                    <i class="fas fa-check text-gold mt-1 me-2 flex-shrink-0"></i>
+                                    <span>{{ point }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
                     
-                    <h4 class="text-white h6 mb-3">Applications:</h4>
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        {% for app in product.get_applications_list %}
-                            <span class="badge bg-secondary">{{ app }}</span>
-                        {% endfor %}
-                    </div>
+                    <section id="applications" class="mb-4">
+                        <h2 class="text-white h5 mb-3"><i class="fas fa-industry text-gold me-2"></i>Primary Applications</h2>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for app in product.get_applications_list %}
+                                <span class="badge bg-secondary p-2">{{ app }}</span>
+                            {% endfor %}
+                        </div>
+                    </section>
                     
-                    <div class="mt-5">
-                        <a href="{% url 'main:contact' %}" class="btn btn-primary-3d me-3">Request Quote</a>
-                        <a href="{% url 'products:list' %}" class="btn btn-outline-light rounded-pill px-4">Back to Products</a>
+                    <!-- Call to Actions -->
+                    <div class="mt-5 d-flex gap-3 flex-wrap">
+                        <a href="{% url 'main:contact' %}?subject=Quote%20Request:%20{{ product.name|urlencode }}" class="btn btn-primary-3d px-4 py-2" title="Request a Quote for {{ product.name }}">Request Quote</a>
+                        <a href="{% url 'products:list' %}" class="btn btn-outline-light rounded-pill px-4 py-2" title="Return to Product Catalog">Back to Products</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Related Products -->
+    <!-- Related Products - Lazy Loaded -->
     {% if related_products %}
-    <section class="py-5 bg-glass-subtle border-top border-bottom border-secondary">
+    <section class="py-5 bg-glass-subtle border-top border-bottom border-secondary" id="related-products">
         <div class="container animate-on-scroll">
-            <h2 class="text-white mb-4 h3"><i class="fas fa-layer-group text-gold me-2"></i>Related Products in {{ product.service.title }}</h2>
+            <h2 class="text-white mb-4 h3"><i class="fas fa-layer-group text-gold me-2"></i>Similar Products in {{ product.service.title }}</h2>
             <div class="row g-4">
                 {% for related in related_products %}
                 <div class="col-lg-3 col-md-6">
-                    <div class="card-3d h-100">
+                    <article class="card-3d h-100">
                         <div class="img-reveal">
                             {% if related.images.all %}
-                                <img src="{{ related.images.first.image.url }}" alt="{{ related.name }}" class="img-fluid card-img-250" style="height: 200px; object-fit: cover; width: 100%;">
+                                <img src="{{ related.images.first.image.url }}" 
+                                     alt="Image of {{ related.name }}" 
+                                     class="img-fluid card-img-250 w-100" 
+                                     style="height: 200px; object-fit: cover;"
+                                     loading="lazy" decoding="async" width="400" height="200">
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="{{ related.name }}" class="img-fluid card-img-250" style="height: 200px; object-fit: cover; width: 100%;">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" 
+                                     alt="Placeholder for {{ related.name }}" 
+                                     class="img-fluid card-img-250 w-100" 
+                                     style="height: 200px; object-fit: cover;"
+                                     loading="lazy" decoding="async" width="400" height="200">
                             {% endif %}
                         </div>
                         <div class="p-4 text-center">
                             <h3 class="text-white h6 mb-3">{{ related.name }}</h3>
-                            <a href="{% url 'products:detail' related.slug %}" class="btn btn-outline-light rounded-pill btn-sm w-100">View Details</a>
+                            <a href="{% url 'products:detail' related.slug %}" class="btn btn-outline-light rounded-pill btn-sm w-100" title="View details of {{ related.name }}">View Details</a>
                         </div>
-                    </div>
+                    </article>
                 </div>
                 {% endfor %}
             </div>
@@ -91,30 +203,39 @@
 
     <!-- Other Categories -->
     {% if other_products %}
-    <section class="py-5">
+    <section class="py-5" id="other-categories">
         <div class="container animate-on-scroll">
-            <h2 class="text-white mb-4 h3"><i class="fas fa-compass text-gold me-2"></i>Explore Other Categories</h2>
+            <h2 class="text-white mb-4 h3"><i class="fas fa-compass text-gold me-2"></i>Explore More Textile Solutions</h2>
             <div class="row g-4">
                 {% for other in other_products %}
                 <div class="col-lg-3 col-md-6">
-                    <div class="card-3d h-100">
+                    <article class="card-3d h-100">
                         <div class="img-reveal">
                             {% if other.images.all %}
-                                <img src="{{ other.images.first.image.url }}" alt="{{ other.name }}" class="img-fluid card-img-250" style="height: 200px; object-fit: cover; width: 100%;">
+                                <img src="{{ other.images.first.image.url }}" 
+                                     alt="{{ other.service.title }} Category - {{ other.name }}" 
+                                     class="img-fluid card-img-250 w-100" 
+                                     style="height: 200px; object-fit: cover;"
+                                     loading="lazy" decoding="async" width="400" height="200">
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" alt="{{ other.name }}" class="img-fluid card-img-250" style="height: 200px; object-fit: cover; width: 100%;">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" 
+                                     alt="Placeholder for {{ other.name }}" 
+                                     class="img-fluid card-img-250 w-100" 
+                                     style="height: 200px; object-fit: cover;"
+                                     loading="lazy" decoding="async" width="400" height="200">
                             {% endif %}
                         </div>
                         <div class="p-4 text-center">
                             <p class="text-gold small mb-2 fw-bold text-uppercase">{{ other.service.title }}</p>
                             <h3 class="text-white h6 mb-3">{{ other.name }}</h3>
-                            <a href="{% url 'products:detail' other.slug %}" class="btn btn-outline-light rounded-pill btn-sm w-100">View Details</a>
+                            <a href="{% url 'products:detail' other.slug %}" class="btn btn-outline-light rounded-pill btn-sm w-100" title="View details of {{ other.name }}">View Details</a>
                         </div>
-                    </div>
+                    </article>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </section>
     {% endif %}
+</article>
 {% endblock %}
