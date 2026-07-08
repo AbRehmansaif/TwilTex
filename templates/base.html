@@ -8,25 +8,42 @@
     <meta name="description" content="{% block meta_description %}Twil Tex Industries is a global leader in industrial textile procurement and B2B textile sourcing.{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions, Twil Tex, Pakistan textiles{% endblock %}">
 
-    <!-- Preconnect to CDNs to reduce latency -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- ✅ FAVICON (MUST BE HERE) -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="preload" href="{% static 'css/style.css' %}" as="style">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
+    <!-- Preload LCP hero image (first carousel slide) -->
+    <link rel="preload" as="image" href="{% static 'images/mainimages/img3.webp' %}" fetchpriority="high">
+
+    <!-- Bootstrap CSS -- load async (non-blocking) -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
+
+    <!-- Custom CSS -- load async (non-blocking) -->
+    <link rel="preload" href="{% static 'css/style.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static 'css/style.css' %}"></noscript>
+
+    <!-- Fonts -- load async to avoid render-blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Inline critical CSS so above-fold renders immediately without any blocking -->
+    <style>
+        body{font-family:'Outfit',system-ui,sans-serif;background-color:#050505;color:#fff;margin:0;overflow-x:hidden;background-image:radial-gradient(at 0% 0%,hsla(253,16%,7%,1) 0,transparent 50%),radial-gradient(at 50% 0%,hsla(225,39%,30%,1) 0,transparent 50%),radial-gradient(at 100% 0%,hsla(339,49%,30%,1) 0,transparent 50%);}
+        .navbar{position:fixed;top:0;width:100%;z-index:1030;background:rgba(5,5,5,0.9);padding:.75rem 0;}
+        .navbar .container{display:flex;align-items:center;justify-content:space-between;max-width:1320px;margin:0 auto;padding:0 1rem;}
+        .navbar-logo{height:52px;width:auto;}
+        .navbar-brand{display:flex;align-items:center;text-decoration:none;}
+        .hero-section{min-height:100vh;}
+        .hero-display{display:flex;align-items:center;}
+        .carousel-item.active .hero-content-side{animation:fadeInLeft .6s ease both;}
+        @keyframes fadeInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+    </style>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
@@ -39,7 +56,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'main:home' %}">
-                <img src="{% static 'images/mainimages/logo.png' %}" alt="Twil Tex Logo" class="navbar-logo">
+                <img src="{% static 'images/mainimages/logo.webp' %}" alt="Twil Tex Logo" class="navbar-logo" width="111" height="92" loading="eager">
                 <span class="brand-text"></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
