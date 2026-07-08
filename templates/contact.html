@@ -1,57 +1,126 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Twil Tex - Contact{% endblock %}
+{% block title %}Contact Us | TwilTex | B2B Textile Suppliers{% endblock %}
 
-{% block meta_description %}Get in touch for bulk textile supply and industrial procurement. Our experts provide corporate textile solutions and B2B sourcing from Pakistan.{% endblock %}
+{% block meta_description %}Get in touch with TwilTex for bulk textile supply, wholesale fabrics, and industrial procurement. Our experts provide corporate textile solutions from Pakistan.{% endblock %}
 
-{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
+{% block meta_keywords %}contact TwilTex, bulk textile suppliers contact, wholesale fabric manufacturers Pakistan, industrial textile procurement, B2B textile sourcing inquiry{% endblock %}
+
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact Us - TwilTex B2B Textile Suppliers">
+<meta property="og:description" content="Get in touch with TwilTex for bulk textile supply, wholesale fabrics, and industrial procurement globally.">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:site_name" content="TwilTex">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/mainimages/logo.png' %}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us - TwilTex B2B Textile Suppliers">
+<meta name="twitter:description" content="Get in touch with TwilTex for bulk textile supply, wholesale fabrics, and industrial procurement globally.">
+
+<!-- Schema.org JSON-LD for SEO & AI Overviews (GEO/AIO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "TwilTex Contact Page",
+  "description": "Contact form and information for TwilTex B2B Textile Suppliers.",
+  "url": "{{ request.build_absolute_uri }}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "TwilTex",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/mainimages/logo.png' %}",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+92-307-7970301",
+      "contactType": "customer service",
+      "email": "twiltexofficial@gmail.com",
+      "availableLanguage": ["English", "Urdu"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Khurrianwala",
+      "addressRegion": "Punjab",
+      "addressCountry": "PK"
+    }
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
+<div itemscope itemtype="https://schema.org/ContactPage">
+    <meta itemprop="name" content="Contact TwilTex">
+    <meta itemprop="description" content="Reach out to TwilTex for premium bulk textile solutions.">
+
     <!-- Header -->
-    <div class="container text-center py-5 mt-5">
-        <span class="text-gold text-uppercase tracking-wider small fw-bold">Contact Us</span>
-        <h1 class="display-3 fw-light mb-4 text-white">Get In Touch</h1>
-        <p class="lead text-muted mx-auto" style="max-width: 600px;">
-            We'd love to hear from you. Whether you have a question about our services or need a quote.
-        </p>
-    </div>
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="container mt-4 mb-3 text-start">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">Contact Us</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container animate-on-scroll">
+            <span class="text-gold text-uppercase tracking-wider small fw-bold">Contact Us</span>
+            <h1 class="display-3 fw-light mb-4 text-white">Get In Touch</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 600px;">
+                We'd love to hear from you. Whether you have a question about our services or need a bulk quotation.
+            </p>
+        </div>
+    </header>
 
     <!-- Contact Form & Info -->
-    <section class="pb-5">
+    <section class="pb-5" aria-label="Contact Form and Details">
         <div class="container">
             <div class="row g-4 g-lg-5">
                 <div class="col-lg-7">
                     <div class="glass-panel p-lg-5">
-                        <h4 class="text-white mb-4 fw-light">Send us a Message</h4>
+                        <h2 class="text-white h4 mb-4 fw-light">Send us a Message</h2>
 
                         {% if messages %}
                             {% for message in messages %}
                                 <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show mb-4 glass-panel" role="alert" style="border-radius: 12px; border-color: rgba(255, 215, 0, 0.4);">
                                     <span class="text-white">{{ message }}</span>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close message"></button>
                                 </div>
                             {% endfor %}
                         {% endif %}
 
                         <form id="contactForm" method="POST" action="{% url 'main:contact' %}">
                             {% csrf_token %}
+                
+                            <input type="text" name="website_url" style="display:none;" tabindex="-1" autocomplete="off">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingFirstName" name="first_name" placeholder="John" required value="{{ first_name|default:'' }}">
+                                        <input type="text" class="form-control" id="floatingFirstName" name="first_name" placeholder="John" required maxlength="100" value="{{ first_name|default:'' }}" aria-required="true">
                                         <label for="floatingFirstName" class="text-muted">First Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingLastName" name="last_name" placeholder="Doe" required value="{{ last_name|default:'' }}">
+                                        <input type="text" class="form-control" id="floatingLastName" name="last_name" placeholder="Doe" required maxlength="100" value="{{ last_name|default:'' }}" aria-required="true">
                                         <label for="floatingLastName" class="text-muted">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com" value="{{ email|default:'' }}">
+                                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com" maxlength="254" value="{{ email|default:'' }}">
                                         <label for="floatingEmail" class="text-muted">Email Address</label>
                                     </div>
                                 </div>
@@ -60,22 +129,22 @@
                                         <div class="position-relative" style="width: 35%;">
                                             <div class="custom-select-wrapper" id="countryCodeWrapper">
                                                  <input type="hidden" id="selectedCountryCode" name="country_code" value="+92">
-                                                 <button type="button" class="btn-custom-select form-control d-flex align-items-center justify-content-between" style="height: 58px;">
+                                                 <button type="button" class="btn-custom-select form-control d-flex align-items-center justify-content-between" style="height: 58px;" aria-label="Select Country Code">
                                                     <span id="codeDisplay">🇵🇰 +92</span>
-                                                    <i class="fas fa-chevron-down small"></i>
+                                                    <i class="fas fa-chevron-down small" aria-hidden="true"></i>
                                                  </button>
                                                  <!-- Dropdown injected by JS -->
                                             </div>
                                         </div>
                                         <div class="form-floating" style="width: 65%;">
-                                            <input type="tel" class="form-control" id="floatingPhone" name="phone" placeholder="300 1234567" value="{{ phone|default:'' }}">
+                                            <input type="tel" class="form-control" id="floatingPhone" name="phone" placeholder="300 1234567" maxlength="20" value="{{ phone|default:'' }}">
                                             <label for="floatingPhone" class="text-muted">Mobile No</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" name="subject">
+                                        <select class="form-select" id="floatingSelect" name="subject" aria-label="Select Subject">
                                             <option value="General Inquiry" {% if subject == 'General Inquiry' %}selected{% endif %} class="text-dark">General Inquiry</option>
                                             <option value="Sales & Quotes" {% if subject == 'Sales & Quotes' %}selected{% endif %} class="text-dark">Sales & Quotes</option>
                                             <option value="Support" {% if subject == 'Support' %}selected{% endif %} class="text-dark">Support</option>
@@ -86,48 +155,52 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="message" style="height: 150px;" required>{{ message|default:'' }}</textarea>
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="message" style="height: 150px;" required maxlength="2000" aria-required="true">{{ message|default:'' }}</textarea>
                                         <label for="floatingTextarea" class="text-muted">Message</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" id="sendMessageBtn" class="btn btn-primary-3d w-100">
                                         <span id="btnText">Send Message</span> 
-                                        <i class="fas fa-paper-plane ms-2" id="btnIcon"></i>
+                                        <i class="fas fa-paper-plane ms-2" id="btnIcon" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                
                 <div class="col-lg-5">
-                    <div class="glass-panel p-lg-5">
-                        <h4 class="text-white mb-4 fw-light">Contact Info</h4>
+                    <address class="glass-panel p-lg-5 mb-0" itemscope itemtype="https://schema.org/Organization">
+                        <meta itemprop="name" content="Twil Tex">
+                        <h2 class="text-white h4 mb-4 fw-light">Contact Info</h2>
                         
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fas fa-map-marker-alt fa-2x me-3 text-gold"></i>
-                            <div>
-                                <h5 class="mb-1 fw-bold text-white">Headquarters</h5>
-                                <p class="text-muted mb-0">Khurrianwala<br></p>
+                            <i class="fas fa-map-marker-alt fa-2x me-3 text-gold" aria-hidden="true"></i>
+                            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                <h3 class="h5 mb-1 fw-bold text-white">Headquarters</h3>
+                                <p class="text-muted mb-0" itemprop="addressLocality">Khurrianwala</p>
                             </div>
                         </div>
 
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fas fa-phone fa-2x me-3 text-gold"></i>
+                            <i class="fas fa-phone fa-2x me-3 text-gold" aria-hidden="true"></i>
                             <div>
-                                <h5 class="mb-1 fw-bold text-white">Phone</h5>
-                                <p class="text-muted mb-0">+92 307 7970301</p>
+                                <h3 class="h5 mb-1 fw-bold text-white">Phone</h3>
+                                <p class="text-muted mb-0" itemprop="telephone">+92 307 7970301</p>
                             </div>
                         </div>
 
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fab fa-whatsapp fa-2x me-3 text-gold"></i>
+                            <i class="fab fa-whatsapp fa-2x me-3 text-gold" aria-hidden="true"></i>
                             <div>
-                                <h5 class="mb-1 fw-bold text-white">WhatsApp</h5>
+                                <h3 class="h5 mb-1 fw-bold text-white">WhatsApp</h3>
                                 <p class="text-muted mb-0">
                                     <a href="https://wa.me/923077970301?text=Hello%20TwilTex%20Team!"
                                     target="_blank"
-                                    class="text-muted text-decoration-none">
+                                    rel="noopener noreferrer"
+                                    class="text-muted text-decoration-none"
+                                    title="Chat with Twil Tex on WhatsApp">
                                         Chat on WhatsApp
                                     </a>
                                 </p>
@@ -135,19 +208,20 @@
                         </div>
 
                         <div class="d-flex align-items-start mb-4">
-                            <i class="fas fa-envelope fa-2x me-3 text-gold"></i>
+                            <i class="fas fa-envelope fa-2x me-3 text-gold" aria-hidden="true"></i>
                             <div>
-                                <h5 class="mb-1 fw-bold text-white">Email</h5>
-                                <p class="text-muted mb-0">twiltexofficial@gmail.com</p>
+                                <h3 class="h5 mb-1 fw-bold text-white">Email</h3>
+                                <p class="text-muted mb-0" itemprop="email">twiltexofficial@gmail.com</p>
                             </div>
                         </div>
 
                         <hr class="border-secondary my-4">
 
-                        <h5 class="mb-3 fw-normal text-white">Our Location</h5>
+                        <h3 class="h5 mb-3 fw-normal text-white">Our Location</h3>
                         <!-- Google Map Embed for Faisalabad, Pakistan -->
                         <div class="rounded-3 overflow-hidden border border-secondary" style="height: 250px;">
                             <iframe 
+                                title="Map Location of Twil Tex Headquarters in Khurrianwala"
                                 src="https://maps.google.com/maps?width=600&height=400&hl=en&q=khurrianwala&t=&z=12&ie=UTF8&iwloc=B&output=embed" 
                                 width="100%" 
                                 height="100%" 
@@ -157,9 +231,10 @@
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
-                    </div>
+                    </address>
                 </div>
             </div>
         </div>
     </section>
+</div>
 {% endblock %}

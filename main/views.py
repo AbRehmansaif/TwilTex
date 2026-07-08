@@ -1,6 +1,7 @@
+import time
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
+from django.utils.html import strip_tags
 from contacts.models import ContactInquiry
 from products.models import Product
 from services.models import Service
@@ -18,20 +19,35 @@ def about(request):
     """About page view"""
     return render(request, 'about.html')
 
-@csrf_exempt
 def contact(request):
     """Contact page view"""
     if request.method == 'POST':
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        country_code = request.POST.get('country_code', '+92')
-        phone = request.POST.get('phone')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        # 1. Spam Protection: Honeypot Check
+        if request.POST.get('website_url'):
+            # Silent discard for bots
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('main:contact')
+            
+        # 2. Spam Protection: Rate Limiting
+        current_time = time.time()
+        last_contact_time = request.session.get('last_contact_time', 0)
+        if current_time - last_contact_time < 30:  # 30 seconds cooldown
+            messages.error(request, "Please wait a moment before sending another message.")
+            return redirect('main:contact')
+        
+        request.session['last_contact_time'] = current_time
+
+        # 3. Security: Sanitize and Limit Payload Size
+        first_name = strip_tags(request.POST.get('first_name', ''))[:100].strip()
+        last_name = strip_tags(request.POST.get('last_name', ''))[:100].strip()
+        email = request.POST.get('email', '').strip()[:254]
+        country_code = strip_tags(request.POST.get('country_code', '+92'))[:10].strip()
+        phone = strip_tags(request.POST.get('phone', ''))[:20].strip()
+        subject = strip_tags(request.POST.get('subject', ''))[:150].strip()
+        message = strip_tags(request.POST.get('message', ''))[:2000].strip()
 
         # Clean inputs
-        email = email.strip() if email else None
+        email = email if email else None
         phone = phone.strip() if phone else None
 
         # Validation: Either email or phone is required
