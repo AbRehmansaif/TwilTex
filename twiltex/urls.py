@@ -19,6 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
+from .sitemaps import StaticViewSitemap, BlogSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'blog': BlogSitemap,
+}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
@@ -26,6 +35,11 @@ urlpatterns = [
     path('services/', include('services.urls')),
     path('blog/', include('blogs.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    
+    # SEO URLs
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path('googlebc81c2a12a2d31f1.html', TemplateView.as_view(template_name="googlebc81c2a12a2d31f1.html", content_type="text/html")),
 ]
 
 # Serve media files in development
