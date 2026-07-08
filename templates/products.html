@@ -9,7 +9,15 @@
 
 {% block content %}
     <!-- Products Hero -->
-    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; align-items: center;">
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="container mt-4 mb-3 text-start">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex">
+                    <li class="breadcrumb-item"><a href="{% url 'main:home' %}" class="text-decoration-none text-muted"><i class="fas fa-home me-1"></i>Home</a></li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page">Products</li>
+                </ol>
+            </nav>
+        </div>
         <div class="container animate-on-scroll">
              <h1 class="display-3 fw-bold text-shimmer mb-4">Our Textile Products</h1>
              <p class="lead text-muted mx-auto" style="max-width: 700px;">

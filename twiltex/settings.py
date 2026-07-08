@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-dev-key")
 # DEBUG = True
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["twiltex.com", "www.twiltex.com", "38.242.254.102"]
+ALLOWED_HOSTS = ["twiltex.com", "www.twiltex.com", "38.242.254.102", "127.0.0.1", "localhost"]
 
 # for production, set allowed hosts like this:
 # ALLOWED_HOSTS = ['IPv4-address', 'localhost']
@@ -172,5 +172,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Force HTTPS in production
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = not DEBUG
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

@@ -33,4 +33,28 @@ def products_list(request):
 def product_detail(request, slug):
     """Product detail page"""
     product = get_object_or_404(Product, slug=slug, is_active=True)
-    return render(request, 'product_detail.html', {'product': product})
+    
+    related_products = []
+    if product.service:
+        related_products = Product.objects.filter(
+            service=product.service, is_active=True
+        ).exclude(id=product.id)[:4]
+        
+    other_categories = Service.objects.exclude(
+        id=product.service_id if product.service else None
+    )
+    
+    other_products = []
+    for category in other_categories:
+        cat_prod = Product.objects.filter(service=category, is_active=True).first()
+        if cat_prod:
+            other_products.append(cat_prod)
+            
+    other_products = other_products[:8]
+
+    context = {
+        'product': product,
+        'related_products': related_products,
+        'other_products': other_products,
+    }
+    return render(request, 'product_detail.html', context)
