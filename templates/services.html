@@ -38,7 +38,7 @@
           "item": {
             "@type": "Service",
             "name": "{{ service.title|escapejs }}",
-            "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'services:detail' service.pk %}",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'services:detail' service.slug %}",
             {% if service.image %}
             "image": "{{ request.scheme }}://{{ request.get_host }}{{ service.image.url }}",
             {% endif %}
@@ -116,7 +116,7 @@
                                 <h2 class="text-white h3 mb-2 fw-normal" itemprop="name">{{ service.title }}</h2>
                                 <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
                                 <p class="text-muted small mb-4" itemprop="description">{{ service.description|truncatewords:20 }}</p>
-                                <a href="{% url 'services:detail' service.pk %}" class="btn btn-sm btn-outline-light rounded-pill px-4" title="Learn more about {{ service.title }}" itemprop="url">View Details</a>
+                                <a href="{% url 'services:detail' service.slug %}" class="btn btn-sm btn-outline-light rounded-pill px-4" title="Learn more about {{ service.title }}" itemprop="url">View Details</a>
                             </div>
                         </article>
                     </div>

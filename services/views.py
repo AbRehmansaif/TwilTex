@@ -7,7 +7,7 @@ def services_list(request):
     services = Service.objects.all()
     return render(request, 'services.html', {'services': services})
 
-def service_detail(request, pk):
+def service_detail(request, slug):
     """Service detail page"""
-    service = get_object_or_404(Service, pk=pk)
+    service = get_object_or_404(Service, slug=slug)
     return render(request, 'service_detail.html', {'service': service})

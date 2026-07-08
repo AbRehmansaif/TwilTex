@@ -9,8 +9,24 @@
 
 {% block content %}
     <!-- Hero -->
-    <header class="py-5 mt-5 text-center" aria-label="About Twil Tex Hero">
-        <div class="container">
+    <header class="py-5 mt-5 text-center" aria-label="About TwilTex Hero">
+        <div class="container mt-4 mb-3 text-start animate-on-scroll">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">About Us</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container animate-on-scroll">
              <h1 class="display-3 fw-bold text-3d mb-4">Sourcing Pakistan's Textiles for International Buyers Since 2004</h1>
              <p class="lead text-white-50 mx-auto" style="max-width: 800px;">
                 A Faisalabad family business turned export partner for hotel groups, distributors, and private label brands across the UK, USA, Europe, and Spain.

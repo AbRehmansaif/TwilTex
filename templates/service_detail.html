@@ -8,6 +8,28 @@
     <!-- Service Detail -->
     <section class="py-5 mt-5">
         <div class="container">
+            <div class="mb-4 text-start animate-on-scroll">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                                <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="{% url 'services:list' %}" class="text-decoration-none text-muted" itemprop="item">
+                                <span itemprop="name">Services</span>
+                            </a>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                        <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">{{ service.title }}</span>
+                            <meta itemprop="position" content="3" />
+                        </li>
+                    </ol>
+                </nav>
+            </div>
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="card-3d p-3">
