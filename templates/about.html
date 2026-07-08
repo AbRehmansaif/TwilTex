@@ -1,70 +1,171 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Twil Tex - About{% endblock %}
+{% block title %}About TwilTex | Textile Sourcing Company, Faisalabad Pakistan{% endblock %}
 
-{% block meta_description %}Learn about Twil Tex Industries, leading bulk textile suppliers specializing in industrial textile procurement and corporate textile solutions since 2004.{% endblock %}
+{% block meta_description %}TwilTex is a Faisalabad-based textile sourcing company led by Founder & CEO Usama Zafar, exporting home, hospitality & medical textiles to the UK, USA, Europe, and Spain.{% endblock %}
 
 {% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
 
 {% block content %}
     <!-- Hero -->
-    <header class="py-5 mt-5 text-center">
+    <header class="py-5 mt-5 text-center" aria-label="About Twil Tex Hero">
         <div class="container">
-             <h1 class="display-3 fw-bold text-3d mb-4">Connecting To Leading Bulk Textile Suppliers</h1>
+             <h1 class="display-3 fw-bold text-3d mb-4">Sourcing Pakistan's Textiles for International Buyers Since 2004</h1>
              <p class="lead text-white-50 mx-auto" style="max-width: 800px;">
-                As premier Sourcing company, <strong>Twil Tex</strong> has been connecting the world to Pakistan’s finest textiles since 2004 through expert <strong>industrial textile procurement</strong> and <strong>B2B sourcing</strong>.
+                A Faisalabad family business turned export partner for hotel groups, distributors, and private label brands across the UK, USA, Europe, and Spain.
              </p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <section class="pb-5">
+    <main class="pb-5">
+        <!-- Structured Data for High-Level SEO/AIO/GEO -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.twiltex.com/#organization",
+              "name": "Twil Tex Industries",
+              "url": "https://www.twiltex.com/",
+              "logo": "https://www.twiltex.com/static/images/logo.png",
+              "foundingDate": "2004",
+              "founder": {
+                "@type": "Person",
+                "name": "Usama Zafar"
+              },
+              "description": "A Faisalabad family business turned export partner for hotel groups, distributors, and private label brands across the UK, USA, Europe, and Spain.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Khurrianwala, Faisalabad",
+                "addressRegion": "Punjab",
+                "addressCountry": "PK"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+              },
+              "areaServed": ["United Kingdom", "United States", "Europe", "Spain", "Netherlands"],
+              "knowsAbout": ["Textile Sourcing", "Hotel Linen", "Private Label Textiles", "B2B Manufacturing", "Fabric Manufacturing"]
+            },
+            {
+              "@type": "AboutPage",
+              "@id": "https://www.twiltex.com/about/#webpage",
+              "url": "https://www.twiltex.com/about/",
+              "name": "About Twil Tex - Textile Sourcing Partner from Pakistan",
+              "description": "Learn about Twil Tex, our history since 2004, our partner-mill manufacturing model, and our commitment to premium quality textile sourcing.",
+              "about": {
+                "@id": "https://www.twiltex.com/#organization"
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://www.twiltex.com/about/#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "When did Twil Tex start?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Twil Tex began in 2004 as a family-run textile business in Khurrianwala, Faisalabad, the heart of Pakistan's textile manufacturing belt."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Who is the CEO of Twil Tex?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Twil Tex is led by Founder & CEO Usama Zafar, who brings five years of hands-on experience in Pakistan's textile export industry to the company."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is Twil Tex's manufacturing model?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Twil Tex operates as a textile sourcing and production management company. We coordinate production through a network of partner mills across Faisalabad, handling weaving, dyeing, and stitching, with our own team managing quality control at every stage."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which markets does Twil Tex export to?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve international buyers, running recurring monthly shipments to Spain, alongside ongoing orders across the United Kingdom (UK), United States (USA), wider Europe, and the Netherlands."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What quality certifications does Twil Tex adhere to?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our production process is aligned with widely recognized textile industry standards, including ISO 9001, OEKO-TEX Standard 100, GOTS, BCI, and Sedex principles."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+        </script>
         <div class="container">
             
             <!-- Story Section -->
-            <div class="row align-items-center mb-5 animate-on-scroll">
+            <section class="row align-items-center mb-5 animate-on-scroll" aria-labelledby="story-heading">
                 <div class="col-lg-6">
                     <div class="card-3d p-4 img-reveal">
-                        <img src="{% static 'images/mainimages/img01.webp' %}" alt="Industrial Textile Procurement at Twil Tex Factory" class="img-fluid rounded-3">
+                        <img src="{% static 'images/mainimages/img01.webp' %}" alt="Twil Tex Textile Sourcing History" class="img-fluid rounded-3" fetchpriority="high">
                     </div>
                 </div>
-                <div class="col-lg-6 ps-lg-5">
-                    <span class="text-gold text-uppercase tracking-wider fw-bold">Our Legacy</span>
-                    <h2 class="mb-4 text-white">Industrial Textile Experts</h2>
-                    <p class="text-muted mb-4 lead">
-                        Established in 2004 in Faisalabad, Twil Tex has evolved into a powerhouse for <strong>wholesale fabric manufacturing</strong> and global <strong>industrial textile procurement</strong>. We serve international organizations with specialized Home, Hospitality, and Healthcare textiles, acting as dedicated <strong>B2B textile sourcing</strong> partners who guarantee quality, compliance, and corporate-grade delivery schedules.
+                <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Our Story</span>
+                    <h2 id="story-heading" class="mb-4 text-white">How Twil Tex Started</h2>
+                    <p class="text-muted mb-3">
+                        Twil Tex began in 2004 as a family-run textile business in Khurrianwala, Faisalabad, the heart of Pakistan's textile manufacturing belt. What started as a modest, locally rooted operation has grown into an export-focused sourcing company working with buyers across four continents.
                     </p>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
-                            <i class="fas fa-certificate text-green"></i>
-                            <span class="text-white small fw-bold">ISO 9001</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
-                            <i class="fas fa-leaf text-green"></i>
-                            <span class="text-white small fw-bold">OEKO-TEX</span>
-                        </div>
-                         <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-2 bg-dark">
-                            <i class="fas fa-globe text-green"></i>
-                            <span class="text-white small fw-bold">GOTS</span>
-                        </div>
-                    </div>
+                    <p class="text-muted mb-3">
+                        Today, Twil Tex is led by <strong>Founder & CEO Usama Zafar</strong>, who brings five years of hands-on experience in Pakistan's textile export industry to the company's day to day operations, from supplier relationships on the factory floor to managing international buyer accounts directly.
+                    </p>
+                    <p class="text-muted mb-0">
+                        Twil Tex now runs an active partner-mill network across Faisalabad, coordinating production for buyers in the UK, USA, Europe, and Spain, with the Netherlands opening up as our newest market.
+                    </p>
                 </div>
-            </div>
+            </section>
 
-            <!-- Fabric Detail Section (New) -->
-            <div class="row align-items-center mb-5 pt-5 animate-on-scroll">
+            <!-- Manufacturing Model -->
+            <section class="row align-items-center mb-5 pt-5 animate-on-scroll" aria-labelledby="model-heading">
                 <div class="col-lg-6 order-lg-2">
                     <div class="card-3d p-4 img-reveal">
-                        <img src="{% static 'images/mainimages/dotedbedsheet.jpeg' %}" alt="Fabric Detail" class="img-fluid rounded-3">
+                        <img src="{% static 'images/mainimages/dotedbedsheet.jpeg' %}" alt="Partner Mill Textile Manufacturing Model" class="img-fluid rounded-3" loading="lazy">
                     </div>
                 </div>
-                <div class="col-lg-6 pe-lg-5 order-lg-1">
+                <div class="col-lg-6 pe-lg-5 order-lg-1 mt-4 mt-lg-0">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">How We Operate: Sourcing Through Partner Mills</span>
+                    <h2 id="model-heading" class="mb-4 text-white">Manufacturing Model</h2>
+                    <p class="text-muted mb-3">
+                        Twil Tex operates as a textile sourcing and production management company. Rather than running a single factory, we coordinate production through a network of partner mills across Faisalabad, each handling weaving, dyeing, or stitching depending on the order, with our own team managing quality control at every stage, from raw material to final random inspection before shipment.
+                    </p>
+                    <p class="text-muted mb-0">
+                        This model lets us match the right mill to the right order (a hotel's bulk bedsheet run needs a different setup than a small private-label towel order) while keeping one accountable point of contact for the buyer.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Fabric Detail Section -->
+            <section class="row align-items-center mb-5 pt-5 animate-on-scroll" aria-labelledby="fabric-heading">
+                <div class="col-lg-6">
+                    <div class="card-3d p-4 img-reveal">
+                        <img src="{% static 'images/mainimages/img2.webp' %}" alt="Fabric Detail Craftsmanship" class="img-fluid rounded-3" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
                     <span class="text-gold text-uppercase tracking-wider fw-bold">Craftsmanship</span>
-                    <h2 class="display-5 text-white mb-4">Fabric Detail</h2>
-                    <h4 class="text-white-50 mb-3">Premium Quality</h4>
+                    <h2 id="fabric-heading" class="display-5 text-white mb-4">Fabric Detail</h2>
+                    <h3 class="text-white-50 mb-3 h4">Premium Quality</h3>
                     <p class="text-muted lead">
-                        At Twil Tex, our commitment to excellence is woven into every fiber. Every inch of our fabric is inspected for perfection using advanced technology and hand-finished expertise to ensure zero defects.
+                        At Twil Tex, our commitment to excellence is woven into every fiber. Every inch of our fabric is inspected for perfection using advanced technology and hand finished expertise to ensure zero defects.
                     </p>
                     <ul class="list-unstyled text-muted mt-4">
                         <li class="mb-2"><i class="fas fa-check text-gold me-2"></i> Masterful Weaving Techniques</li>
@@ -72,17 +173,17 @@
                         <li><i class="fas fa-check text-gold me-2"></i> Eco-Friendly Processing</li>
                     </ul>
                 </div>
-            </div>
+            </section>
 
             <!-- Mission & Vision -->
-            <div class="row g-4 mt-5">
+            <section class="row g-4 mt-5 mb-5 pt-4 animate-on-scroll" aria-label="Our Mission and Vision">
                 <div class="col-md-6">
                     <div class="glass-panel p-5 h-100 text-center">
                         <div class="card-content">
                             <i class="fas fa-bullseye fa-3x mb-4 text-gold"></i>
                             <h3 class="mb-3 text-white">Our Mission</h3>
                             <p class="text-muted">
-                                To provide world class textile solutions for Home, Hospitality, and Healthcare sectors, combining expert managed sourcing, strict quality control, and ethical practices for global markets.
+                                Give international buyers a single, accountable partner for Pakistani made textiles, from sampling through final shipment inspection.
                             </p>
                         </div>
                     </div>
@@ -93,13 +194,96 @@
                             <i class="fas fa-eye fa-3x mb-4 text-gold"></i>
                             <h3 class="mb-3 text-white">Our Vision</h3>
                             <p class="text-muted">
-                                To be a global leader in sustainable textile sourcing and manufacturing, defining the future of fabrics through innovation, technology, and dedicated expertise.
+                                Build on our growing footprint across the UK, USA, and Europe to become Faisalabad's go-to sourcing partner for hotel groups and private label brands expanding into new markets.
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Markets We Serve -->
+            <section aria-labelledby="markets-heading">
+                <div class="text-center mb-5 pt-5 animate-on-scroll">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Where We Export</span>
+                    <h2 id="markets-heading" class="display-6 mt-2 text-white">Markets We Serve</h2>
+                    <p class="text-muted mt-3 mx-auto" style="max-width: 800px;">
+                        We run recurring monthly shipments, including multiple 40foot containers a month to our Spain accounts alone alongside ongoing orders across the UK, US, and wider European markets.
+                    </p>
+                </div>
+                
+                <div class="row justify-content-center g-4 animate-on-scroll">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="glass-panel p-4 text-center h-100 card-hover-pulse">
+                            <i class="fas fa-map-marker-alt fa-2x text-gold mb-3" aria-hidden="true"></i>
+                            <h3 class="text-white h5 mb-0">United Kingdom</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="glass-panel p-4 text-center h-100 card-hover-pulse">
+                            <i class="fas fa-map-marker-alt fa-2x text-gold mb-3" aria-hidden="true"></i>
+                            <h3 class="text-white h5 mb-0">United States</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="glass-panel p-4 text-center h-100 card-hover-pulse">
+                            <i class="fas fa-map-marker-alt fa-2x text-gold mb-3" aria-hidden="true"></i>
+                            <h3 class="text-white h5 mb-0">Europe <span class="d-block small text-muted mt-1">(including Spain)</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="glass-panel p-4 text-center h-100 card-hover-pulse" style="border-color: rgba(255, 215, 0, 0.3);">
+                            <i class="fas fa-rocket fa-2x text-gold mb-3" aria-hidden="true"></i>
+                            <h3 class="text-white h5 mb-0">Netherlands <span class="d-block small text-gold mt-1">(Newest Market)</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="text-center mb-5 pt-5 animate-on-scroll" aria-labelledby="certs-heading">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">Certifications</span>
+                <h2 id="certs-heading" class="display-6 mt-2 text-white mb-4">Quality Standards We Work Toward</h2>
+                <p class="text-muted mx-auto" style="max-width: 700px;">
+                    Our production process is aligned with widely recognized textile industry standards, ensuring compliance and quality for global markets.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-4 py-2 bg-dark shadow-sm">
+                        <i class="fas fa-check-circle text-gold"></i>
+                        <span class="text-white fw-bold">ISO 9001</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-4 py-2 bg-dark shadow-sm">
+                        <i class="fas fa-check-circle text-gold"></i>
+                        <span class="text-white fw-bold">OEKO-TEX Standard 100</span>
+                    </div>
+                     <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-4 py-2 bg-dark shadow-sm">
+                        <i class="fas fa-check-circle text-gold"></i>
+                        <span class="text-white fw-bold">GOTS</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-4 py-2 bg-dark shadow-sm">
+                        <i class="fas fa-check-circle text-gold"></i>
+                        <span class="text-white fw-bold">BCI</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 border border-secondary rounded-pill px-4 py-2 bg-dark shadow-sm">
+                        <i class="fas fa-check-circle text-gold"></i>
+                        <span class="text-white fw-bold">Sedex Principles</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="row mt-5 pt-4 animate-on-scroll mb-5" aria-labelledby="cta-heading">
+                <div class="col-lg-10 mx-auto">
+                    <div class="glass-panel p-5 text-center border-0" style="background: rgba(20, 20, 22, 0.8); box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
+                        <h2 id="cta-heading" class="display-6 fw-bold text-white mb-4">Want to See Our Facility or Talk to Our Team?</h2>
+                        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                            <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold shadow-lg" title="Schedule a Call" aria-label="Schedule a Call">Schedule a Call</a>
+                            <a href="{% url 'main:contact' %}?subject=Client%20References" class="btn-premium btn-premium-outline" title="Request Client References" aria-label="Request Client References">Request Client References</a>
+                            <a href="{% url 'main:contact' %}?subject=Quote" class="btn-premium btn-premium-outline" title="Get a Quote" aria-label="Get a Quote">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
-    </section>
+    </main>
 {% endblock %}
