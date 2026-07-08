@@ -2,10 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from contacts.models import ContactInquiry
+from products.models import Product
+from services.models import Service
 
 def home(request):
     """Home page view"""
-    return render(request, 'index.html')
+    products = Product.objects.filter(is_active=True).order_by('display_order')[:6]
+    services = Service.objects.all().order_by('-created_at')[:4]
+    return render(request, 'index.html', {
+        'products': products,
+        'services': services
+    })
 
 def about(request):
     """About page view"""

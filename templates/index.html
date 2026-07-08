@@ -11,7 +11,8 @@
 <meta property="og:url" content="https://twiltex.com/">
 <meta property="og:title" content="Bulk Textile Suppliers & Wholesale Fabric Manufacturers | Twil Tex Industries">
 <meta property="og:description" content="Premium B2B textile sourcing and industrial textile procurement for global markets. Explore corporate textile solutions with Twil Tex.">
-<meta property="og:image" content="https://twiltex.com/static/images/seo-banner.jpg">
+<meta property="og:image" content="https://twiltex.com/static/images/twiltex-logo.png">
+<meta name="twitter:image" content="https://twiltex.com/static/images/twiltex-logo.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
@@ -149,6 +150,65 @@
         </div>
     </header>
 
+    <!-- Additional Overview Section -->
+    <header class="hero-section position-relative d-flex align-items-center" style="min-height: 85vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'images/mainimages/img3.webp' %}') no-repeat center center/cover;">
+        <div class="container py-5 mt-5 z-1">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center animate__animated animate__fadeInUp">
+                    <h1 class="display-4 fw-bold text-white mb-4">
+                        Wholesale Fabric Manufacturers & Hotel Linen Supplier <br>
+                        <span class="text-gold">from Faisalabad, Pakistan</span>
+                    </h1>
+                    <p class="lead text-white-50 mb-5 fs-5">
+                        Twil Tex sources and manufactures home, hospitality, and medical textiles for import businesses, hotel groups, and private label brands across the UK, USA, Europe, and Spain, with in-house quality control on every shipment.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-3 fs-5 text-decoration-none">Request a Quote</a>
+                        <a href="{% static 'catalog.pdf' %}" class="btn btn-outline-light px-5 py-3 fs-5" style="border-width: 2px;">Download Product Catalog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Strip -->
+    <div class="bg-dark py-3 border-bottom border-secondary">
+        <div class="container text-center">
+            <p class="text-white-50 mb-0 tracking-wider small text-uppercase fw-semibold">
+                Aligned with ISO 9001 <span class="text-gold mx-2">•</span> OEKO-TEX Standard 100 <span class="text-gold mx-2">•</span> GOTS <span class="text-gold mx-2">•</span> BCI Cotton <span class="text-gold mx-2">•</span> Sedex Principles
+            </p>
+        </div>
+    </div>
+
+    <!-- Who We Are Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 animate-on-scroll delay-100">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Who We Are</span>
+                    <h2 class="display-6 mt-2 mb-4 text-white">A Wholesale Fabric Manufacturer Built for Import Buyers, Not Just Local Retail</h2>
+                    <p class="text-muted mb-4 fs-5" style="line-height: 1.8;">
+                        Twil Tex has operated out of Khurrianwala, Faisalabad — Pakistan's largest textile sourcing hub, since 2004, starting as a family-run textile business. Today, led by Founder & CEO Usama Zafar, we coordinate production through a trusted network of partner mills for buyers who need consistent bulk output: hotel groups replacing linen fleets, importers building private label bedding lines, and healthcare distributors sourcing compliant medical textiles.
+                    </p>
+                    <p class="text-muted fs-5" style="line-height: 1.8;">
+                        Every order runs through our own in-line QC checkpoints and a Final Random Inspection (FRI) before it leaves the country, so what you approve in the sample is what arrives in the container.
+                    </p>
+                </div>
+                <div class="col-lg-6 animate-on-scroll delay-200">
+                    <div class="position-relative">
+                        <img src="{% static 'images/mainimages/img1.webp' %}" alt="Twil Tex Manufacturing" class="img-fluid rounded shadow-lg border border-secondary w-100">
+                        <div class="position-absolute bottom-0 start-0 p-4 bg-dark bg-opacity-75 rounded-bottom w-100" style="backdrop-filter: blur(5px);">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-gold fa-2x me-3"></i>
+                                <h5 class="text-white mb-0">In-House Quality Control</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Creating Excellence / Features -->
     <section class="py-5 position-relative">
         <div class="container py-5">
@@ -277,6 +337,342 @@
     </section>
 
 
+    <!-- Product Categories Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">What We Source</span>
+                <h2 class="display-5 mt-2 text-white">Textile Categories We Source and Export</h2>
+                <p class="text-muted mt-3 mx-auto" style="max-width: 800px;">
+                    Each category page lists available GSM ranges, thread counts, standard sizes, and minimum order quantities upfront, so you can shortlist products without waiting on a quote email.
+                </p>
+                <div class="mt-4">
+                    <a href="{% url 'products:list' %}" class="btn-premium btn-premium-gold">Show All Products</a>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                {% for product in products %}
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse d-flex flex-column">
+                        {% if product.images.first %}
+                        <div class="mb-4 mx-auto overflow-hidden rounded-circle" style="width: 100px; height: 100px; background: rgba(255,255,255,0.05);">
+                            <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        {% else %}
+                        <div class="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style="width: 100px; height: 100px; background: rgba(255,255,255,0.05);">
+                            <i class="fas fa-box fa-3x text-gold"></i>
+                        </div>
+                        {% endif %}
+                        <h4 class="text-white">{{ product.name }}</h4>
+                        <p class="text-muted mt-3 flex-grow-1">{{ product.short_description|truncatewords:20 }}</p>
+                        <a href="{% url 'products:detail' product.slug %}" class="text-gold text-decoration-none fw-bold mt-auto">View Specifications <i class="fas fa-chevron-right ms-1 small"></i></a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center text-muted">
+                    <p>No products available at the moment.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Buyers Source From Us (USPs) -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">USPs</span>
+                <h2 class="display-5 mt-2 text-white">What Working With Twil Tex Actually Looks Like</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 animate-on-scroll delay-100">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-check-double fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Fixed QC Checkpoints</h4>
+                        <p class="text-muted mt-3">In-line inspection at weaving, dyeing, and stitching stages, plus a Final Random Inspection before cargo departure.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll delay-200">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-network-wired fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Partner-Mill Network</h4>
+                        <p class="text-muted mt-3">We coordinate weaving, dyeing/finishing, and stitching through vetted partner mills in Faisalabad — you manage one relationship, not five factories.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll delay-100">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-certificate fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Standards We Work Toward</h4>
+                        <p class="text-muted mt-3">Production aligned with ISO 9001, OEKO-TEX Standard 100, GOTS, BCI, and Sedex principles.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-on-scroll delay-200">
+                    <div class="glass-panel p-5 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle" style="background: rgba(255,255,255,0.05);">
+                           <i class="fas fa-sync-alt fa-2x text-gold"></i>
+                        </div>
+                        <h4 class="text-white">Built for Repeat Bulk Orders</h4>
+                        <p class="text-muted mt-3">Color and shade consistency tracked batch-to-batch, proven by our recurring monthly container shipments to Spain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Sourcing With Us Works (Process) -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">Process</span>
+                <h2 class="display-5 mt-2 text-white">From Inquiry to Delivery: How We Manage Your Order</h2>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <!-- Step 1 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">1</span>
+                        </div>
+                        <h5 class="text-white">Requirement Call & Sampling</h5>
+                        <p class="text-muted mt-3 mb-0">Share specs or a reference sample; we quote and produce a physical sample.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll delay-100">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">2</span>
+                        </div>
+                        <h5 class="text-white">Production Planning</h5>
+                        <p class="text-muted mt-3 mb-0">Confirmed order enters scheduling with your target ship date.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll delay-200">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">3</span>
+                        </div>
+                        <h5 class="text-white">Manufacturing & In-Line QC</h5>
+                        <p class="text-muted mt-3 mb-0">Weaving/knitting → dyeing/finishing → cutting & stitching, inspected at each stage.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">4</span>
+                        </div>
+                        <h5 class="text-white">Lab Testing</h5>
+                        <p class="text-muted mt-3 mb-0">Coordinated testing for fiber content, colorfastness, and safety compliance where applicable.</p>
+                    </div>
+                </div>
+                <!-- Step 5 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll delay-100">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">5</span>
+                        </div>
+                        <h5 class="text-white">Final Random Inspection (FRI)</h5>
+                        <p class="text-muted mt-3 mb-0">Full shipment checked before cargo departs.</p>
+                    </div>
+                </div>
+                <!-- Step 6 -->
+                <div class="col-lg-4 col-md-6 animate-on-scroll delay-200">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse">
+                        <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 60px; height: 60px; background: rgba(255,255,255,0.05);">
+                            <span class="text-gold fw-bold fs-4">6</span>
+                        </div>
+                        <h5 class="text-white">Shipping & Documentation</h5>
+                        <p class="text-muted mt-3 mb-0">Export documentation, customs paperwork, and shipment tracking provided.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">Services Overview</span>
+                <h2 class="display-5 mt-2 text-white">Sourcing Services by Industry</h2>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                {% for service in services %}
+                <div class="col-lg-3 col-md-6 animate-on-scroll">
+                    <div class="glass-panel p-4 h-100 text-center hover-lift card-hover-pulse d-flex flex-column">
+                        <div class="mb-4 d-inline-block p-3 rounded-circle mx-auto" style="background: rgba(255,255,255,0.05); width: 80px; height: 80px;">
+                            {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-100 h-100 object-fit-cover rounded-circle">
+                            {% else %}
+                                <i class="fas fa-cogs fa-2x text-gold mt-1"></i>
+                            {% endif %}
+                        </div>
+                        <h5 class="text-white mb-2">{{ service.title }}</h5>
+                        <p class="text-muted small mt-3 flex-grow-1">{{ service.description|truncatewords:15 }}</p>
+                        <a href="{% url 'services:list' %}#service-{{ service.id }}" class="text-gold text-decoration-none fw-bold mt-auto">View Service <i class="fas fa-arrow-right ms-1 small"></i></a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center text-muted">
+                    <p>No services available at the moment.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 animate-on-scroll delay-100">
+                    <span class="text-gold text-uppercase tracking-wider fw-bold">Case Study</span>
+                    <h2 class="display-6 mt-2 mb-4 text-white">Monthly Container Shipments to Spain</h2>
+                    <p class="text-muted mb-4 fs-5" style="line-height: 1.8;">
+                        Twil Tex now ships multiple 40-foot containers a month to a hospitality textile distributor in Spain — bedsheets and towels manufactured to a locked specification, quality-checked, and shipped on a recurring monthly schedule without re-approving samples each time.
+                    </p>
+                    <a href="{% url 'blogs:list' %}" class="btn-premium btn-premium-gold">Read the Full Case Study</a>
+                </div>
+                <div class="col-lg-6 animate-on-scroll delay-200">
+                    <div class="position-relative">
+                        <img src="{% static 'images/mainimages/img2.webp' %}" alt="Monthly Shipments" class="img-fluid rounded shadow-lg border border-secondary w-100">
+                        <div class="position-absolute bottom-0 start-0 p-4 bg-dark bg-opacity-75 rounded-bottom w-100" style="backdrop-filter: blur(5px);">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-ship text-gold fa-2x me-3"></i>
+                                <h5 class="text-white mb-0">Consistent Quality, Reliable Delivery</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 position-relative">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-gold text-uppercase tracking-wider fw-bold">FAQs</span>
+                <h2 class="display-5 mt-2 text-white">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Q1 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingOne">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" style="font-size: 1.1rem; font-weight: 500;">
+                                    What does a wholesale fabric manufacturer in Pakistan actually do?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    A wholesale fabric manufacturer sources raw cotton or synthetic fiber, then manages weaving, dyeing, and finishing to produce fabric in bulk for buyers like retailers, hotels, and private label brands — rather than selling finished retail products directly to consumers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingTwo">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 1.1rem; font-weight: 500;">
+                                    What is the minimum order quantity (MOQ) for hotel linen from Twil Tex?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Our MOQ for standard hotel linen typically begins at industry-standard volumes (e.g., 500-1,000 pieces depending on the specific item and GSM). Please contact us directly with your exact requirements for a precise quote.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingThree">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 1.1rem; font-weight: 500;">
+                                    Why do hotels and hospitality buyers source linen from Pakistan instead of China or India?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Pakistan is one of the world's largest cotton producers, giving Faisalabad-based manufacturers direct access to raw cotton without import costs — typically resulting in lower prices for cotton-rich hospitality textiles like towels and bedsheets compared to countries that import cotton.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingFour">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="font-size: 1.1rem; font-weight: 500;">
+                                    Is Twil Tex a manufacturer or a sourcing agent?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Twil Tex is a textile sourcing and production management company. We coordinate production through a network of partner mills in Faisalabad, with our own team managing quality control from raw material to final shipment inspection.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q5 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingFive">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="font-size: 1.1rem; font-weight: 500;">
+                                    What certifications does Twil Tex work with?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Our production is aligned with ISO 9001, OEKO-TEX Standard 100, GOTS, BCI, and Sedex principles.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q6 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingSix">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="font-size: 1.1rem; font-weight: 500;">
+                                    Can Twil Tex produce private label / custom-branded textiles?
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Yes. Custom packaging, woven or embroidered labels, and buyer-specific branding are available on bulk orders.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="glass-panel mb-3 overflow-hidden">
+                            <h2 class="accordion-header m-0" id="headingSeven">
+                                <button class="accordion-button collapsed bg-transparent text-white shadow-none p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" style="font-size: 1.1rem; font-weight: 500;">
+                                    Does Twil Tex handle recurring/repeat orders, not just one-time bulk orders?
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted border-top border-secondary pt-4 px-4 pb-4">
+                                    Yes — we currently manage recurring monthly shipments, including multiple 40ft containers a month to hospitality buyers in Spain, using a locked specification approved once at the start of the partnership.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Customer Reviews -->
     <section class="py-5">
         <div class="container py-5">
@@ -388,6 +784,30 @@
                     <div class="cert-slide"><img src="{% static 'images/certifications/sanfor-knit-e1750855221147.png' %}" alt="Sanfor Knit" loading="lazy"></div>
                     <div class="cert-slide"><img src="{% static 'images/certifications/sedex-e1750855239873.png' %}" alt="Sedex" loading="lazy"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="position-relative overflow-hidden pt-3 pb-5 mt-5">
+        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" style="background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+        <div class="container py-5 position-relative z-1 text-center">
+            <div class="glass-panel p-5 mx-auto border-0 position-relative" style="max-width: 850px; background: rgba(20, 20, 22, 0.7); box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
+                <!-- Decorative top line -->
+                <div class="position-absolute top-0 start-50 translate-middle-x w-25 rounded-pill" style="height: 4px; background: linear-gradient(90deg, transparent, #d4af37, transparent);"></div>
+                
+                <div class="mb-4 pt-3">
+                    <span class="d-inline-flex align-items-center justify-content-center p-4 rounded-circle shadow" style="background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <i class="fas fa-paper-plane fa-2x text-gold"></i>
+                    </span>
+                </div>
+                <h2 class="display-5 fw-bold text-white mb-4 tracking-wider">Ready to Get Started?</h2>
+                <p class="text-muted fs-5 mb-5 mx-auto" style="max-width: 600px; line-height: 1.8;">
+                    Join buyers worldwide who trust Twil Tex for consistent quality, bulk capacity, and reliable delivery. Let's discuss your requirements today.
+                </p>
+                <a href="{% url 'main:contact' %}" class="btn-premium btn-premium-gold px-5 py-4 fs-5 rounded-pill shadow-lg border-0 d-inline-flex align-items-center justify-content-center text-uppercase fw-bold" style="letter-spacing: 1px; min-width: 250px;">
+                    Contact Us Now <i class="fas fa-arrow-right ms-3"></i>
+                </a>
             </div>
         </div>
     </section>
