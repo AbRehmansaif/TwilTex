@@ -1,71 +1,154 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Twil Tex - Services{% endblock %}
+{% block title %}B2B Textile Sourcing & Procurement Services | Twil Tex{% endblock %}
 
 {% block meta_description %}Discover professional industrial textile procurement and B2B textile sourcing services. Twil Tex provides end-to-end corporate textile solutions globally.{% endblock %}
 
-{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions{% endblock %}
+{% block meta_keywords %}bulk textile suppliers, wholesale fabric manufacturers, industrial textile procurement, B2B textile sourcing, corporate textile solutions, textile manufacturing services{% endblock %}
+
+{% block extra_css %}
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="B2B Textile Sourcing & Procurement Services - Twil Tex">
+<meta property="og:description" content="Discover professional industrial textile procurement and B2B textile sourcing services globally with Twil Tex.">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:site_name" content="Twil Tex">
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/mainimages/logo.png' %}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="B2B Textile Sourcing Services - Twil Tex">
+<meta name="twitter:description" content="Discover professional industrial textile procurement and B2B textile sourcing services globally with Twil Tex.">
+
+<!-- Schema.org JSON-LD for SEO & AI Overviews (GEO/AIO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Twil Tex Corporate Textile Solutions",
+  "description": "Professional industrial textile procurement and manufacturing services.",
+  "url": "{{ request.build_absolute_uri }}",
+  "itemListElement": [
+    {% if services %}
+        {% for service in services %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "item": {
+            "@type": "Service",
+            "name": "{{ service.title|escapejs }}",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'services:detail' service.pk %}",
+            {% if service.image %}
+            "image": "{{ request.scheme }}://{{ request.get_host }}{{ service.image.url }}",
+            {% endif %}
+            "description": "{{ service.description|escapejs }}",
+            "provider": {
+              "@type": "Organization",
+              "name": "Twil Tex"
+            }
+          }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
+<div itemscope itemtype="https://schema.org/CollectionPage">
+    <meta itemprop="name" content="Twil Tex Services Catalog">
+    <meta itemprop="description" content="End-to-end corporate textile solutions and procurement services.">
+
     <!-- Header -->
-    <div class="container text-center py-5 mt-5">
-        <span class="text-gold text-uppercase tracking-wider small">Corporate Textile Solutions</span>
-        <h1 class="display-3 fw-light mb-4">B2B Textile Sourcing</h1>
-        <div style="height: 1px; width: 100px; background: var(--accent-gold); margin: 0 auto 30px;"></div>
-        <p class="lead text-muted mx-auto" style="max-width: 600px;">
-            Professional <strong>industrial textile procurement</strong> and manufacturing. We offer end-to-end <strong>corporate textile solutions</strong> tailored for global textile organizations.
-        </p>
-    </div>
+    <header class="py-5 mt-5 text-center position-relative overflow-hidden" style="min-height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="container mt-4 mb-3 text-start">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 glass-panel p-2 px-3 rounded-pill d-inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="{% url 'main:home' %}" class="text-decoration-none text-muted" itemprop="item">
+                            <i class="fas fa-home me-1"></i><span itemprop="name">Home</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li class="breadcrumb-item active text-gold" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">Services</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container animate-on-scroll">
+            <span class="text-gold text-uppercase tracking-wider small fw-bold">Corporate Textile Solutions</span>
+            <h1 class="display-3 fw-bold text-shimmer mb-4">B2B Textile Sourcing</h1>
+            <div style="height: 2px; width: 100px; background: var(--accent-gold); margin: 0 auto 30px;"></div>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+                Professional <strong>industrial textile procurement</strong> and manufacturing. We offer end-to-end <strong>corporate textile solutions</strong> tailored for global textile organizations.
+            </p>
+        </div>
+    </header>
 
     <!-- Services Grid -->
-    <section class="pb-5">
+    <section class="pb-5" aria-label="Our Services List">
         <div class="container">
             <div class="row g-4 g-lg-5">
                 {% if services %}
                     {% for service in services %}
                     <!-- Service {{ forloop.counter }} -->
                     <div class="col-lg-4">
-                        <div class="card-3d h-100 overflow-hidden text-center hover-scale">
+                        <article class="card-3d h-100 overflow-hidden text-center hover-scale" itemscope itemtype="https://schema.org/Service">
+                            <meta itemprop="provider" content="Twil Tex">
                             <div class="img-reveal">
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid card-img-250">
+                                {% if service.image %}
+                                    <img src="{{ service.image.url }}" 
+                                         alt="{{ service.title }} - Twil Tex Service" 
+                                         class="img-fluid card-img-250 w-100"
+                                         loading="lazy" decoding="async" width="400" height="250" style="object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800" 
+                                         alt="{{ service.title }} Placeholder" 
+                                         class="img-fluid card-img-250 w-100"
+                                         loading="lazy" decoding="async" width="400" height="250" style="object-fit: cover;">
+                                {% endif %}
                             </div>
                             <div class="p-4 bg-transparent">
-                                <h3 class="text-white mb-2 fw-normal">{{ service.title }}</h3>
+                                <h2 class="text-white h3 mb-2 fw-normal" itemprop="name">{{ service.title }}</h2>
                                 <div style="width: 50px; height: 2px; background: var(--accent-gold); margin: 10px auto;"></div>
-                                <p class="text-muted small mb-4">{{ service.description|truncatewords:20 }}</p>
-                                <a href="{% url 'services:detail' service.pk %}" class="btn btn-sm btn-outline-light rounded-pill px-4">View Details</a>
+                                <p class="text-muted small mb-4" itemprop="description">{{ service.description|truncatewords:20 }}</p>
+                                <a href="{% url 'services:detail' service.pk %}" class="btn btn-sm btn-outline-light rounded-pill px-4" title="Learn more about {{ service.title }}" itemprop="url">View Details</a>
                             </div>
-                        </div>
+                        </article>
                     </div>
                     {% endfor %}
                 {% else %}
                     <div class="col-12 text-center py-5">
                         <div class="glass-panel p-5 d-inline-block">
-                            <i class="fas fa-tools fa-3x text-gold mb-4"></i>
-                            <h3 class="text-white">Our Services are Coming Soon</h3>
+                            <i class="fas fa-tools fa-3x text-gold mb-4" aria-hidden="true"></i>
+                            <h2 class="text-white h3">Our Services are Coming Soon</h2>
                             <p class="text-muted">We are currently detailing our specialized textile sourcing and procurement services.</p>
-                            <a href="{% url 'main:contact' %}" class="btn btn-primary-3d mt-3">Contact Support</a>
+                            <a href="{% url 'main:contact' %}" class="btn btn-primary-3d mt-3" title="Contact Twil Tex Support">Contact Support</a>
                         </div>
                     </div>
                 {% endif %}
             </div>
 
             <!-- Quality Assurance -->
-            <div class="glass-panel p-5 mt-5">
+            <section class="glass-panel p-5 mt-5" aria-labelledby="qa-heading">
                 <div class="row align-items-center">
                     <div class="col-lg-8">
-                        <h3 class="text-white mb-3">ISO 9001 Certified Quality</h3>
-                        <p class="text-muted">
-                            Every meter of fabric that leaves our warehouse runs through a 4-point inspection system. 
-                            We use advanced <strong>Uster Technologies</strong> lab equipment to test yarn strength and evenness.
+                        <h2 id="qa-heading" class="text-white h3 mb-3">ISO 9001 Certified Quality</h2>
+                        <p class="text-muted" style="line-height: 1.8;">
+                            Every meter of fabric that leaves our warehouse runs through a strict 4-point inspection system. 
+                            We utilize advanced <strong>Uster Technologies</strong> lab equipment to rigorously test yarn strength, evenness, and overall durability.
                         </p>
                     </div>
                     <div class="col-lg-4 text-center">
-                         <i class="fas fa-medal fa-5x text-gold"></i>
+                         <i class="fas fa-medal fa-5x text-gold" aria-hidden="true" title="ISO 9001 Certified"></i>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
+</div>
 {% endblock %}
